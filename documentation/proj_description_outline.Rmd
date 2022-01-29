@@ -2,7 +2,7 @@
 title: "Project Description Outline"
 output:
   html_document:
-    df_print: paged
+    df_print: paged 
   pdf_document: default
 ---
 
@@ -12,17 +12,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Names of group members
 
-Person 1, Person 2, Person 3
+Mujtaba Khider, Emily Noone, Nerigna Šiugždinytė and Tom Wightman
 
 ### Roles & responsibilities of each member
 
-**Person 1** worked on ...
+**Mujtaba** worked on...
 
-**Person 2** worked on ...
+**Emily** worked on exploring demographic data within NHS Scotland, considering...
 
-**Person 3** worked on ...
+**Nerigna** investigated the levels of capacity within acute hospital sector.
 
-**Everyone** worked on ...
+**Tom** worked on initialising file structure and communication platform for task awareness and dissemination. Also began record if this document. 
+
+**Everyone** explored the data in order to better understand what questions could be asked, while always maintaining a major theme derived from the initial requirement of the dashboard.
 
 ### Brief description of dashboard topic
 
@@ -34,25 +36,34 @@ The dashboard outlines our topic in terms of ...
 
 ### Stages of the project
 
-* Planning & dashboard wireframe
-* Git branching & version control
-* Choosing datasets
-
-and so on ...
+* Identify and understand the main requirement of the dashboard, unifying with a mission statement
+* Set a MVP with the view for further enhancement, if MVP met
+* Explore the data to better understand what avenues and conclusions could be met
+* Once familiar and satisfied with the data and outputs, begin to wireframe the dashboard
+* Create roadmap of project - focusing on timelines
+* Choose datasets collaboratively, decide on formatting and cleaning processes and execute
+* Task out desired graphical/statistical outputs and execute
+* Team members will maintain a process of **data manipulation > output > analysis** to feed back into the dashboard
+* Git branching & version control - continuous development as familiarisation process ongoing
+* Merge individual outputs together to trial dashboard integration
+* Review flow and relevance to mission statement
+* MVP should be achieved here
+* Commence presentation development
+* Final sweep through of documentation, dashboard process and presentation
+* Deliver products
 
 ### Which tools were used in the project
 
-* Zoom (daily stand-ups and occasional mob programming)
-* Trello (planning & task allocation)
-* Git/GitHub (collaboration & version control)
-
-and so on ...
+* Zoom 
+* Trello 
+* Git/GitHub 
+* R Studios
 
 ### How did you gather and synthesise requirements for the project?
 
-We synthesised the information given in the brief by ...
+We synthesised the information given in the brief by exploring all provided materials individually understanding, in our own personal view, what was required of the group. We then shared our interpretations with each other while unanimously funneling ideas into one unifying approach. By creating a mission statement, this allowed a clearly defined reference point to be accessed by all team members at all times. This meant that no matter what area of the project an individual was completing at any given time, if the mission statement could be met by their actions then the work is beneficial to team and further drives us towards our end goal.
 
-We prioritised ...
+We prioritised exploring and understanding our capabilities with the data provided, in order to enable the creation of a wireframe and an end product to strive for. Once achieved, tasks were assigned and executed.
 
 ### Motivations for using the data you have chosen
 
@@ -70,11 +81,11 @@ To clean the datasets we ...
 
 [**Hint**: This page offers a good starting point for understanding the data structure: https://guides.statistics.gov.scot/article/34-understanding-the-data-structure]
 
-The data is in the form of ...
+The data is in the form of csv files, which is stored in our shared Git Hub Repository. The data will be stored in both raw and cleaned formats.
 
 This means ...
 
-Benefits of storing the data like this are ...
+Benefits of storing the data like this are that they are universally accessible and can be revised at any point. 
 
 ### Ethical and legal considerations of the data
 
