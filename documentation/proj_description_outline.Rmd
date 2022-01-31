@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Names of group members
 
-Mujtaba Khider, Emily Noone, Nerigna Šiugždinytė and Tom Wightman
+Mujtaba Khider, Emily Noone, Neringa Šiugždinytė and Tom Wightman
 
 ### Roles & responsibilities of each member
 
@@ -20,7 +20,7 @@ Mujtaba Khider, Emily Noone, Nerigna Šiugždinytė and Tom Wightman
 
 **Emily** worked on exploring demographic data within NHS Scotland, considering...
 
-**Nerigna** investigated the levels of capacity within acute hospital sector.
+**Neringa** investigated the levels of capacity within acute hospital sector.
 
 **Tom** worked on initialising file structure and communication platform for task awareness and dissemination. Also began record if this document. 
 
