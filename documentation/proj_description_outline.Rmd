@@ -16,13 +16,13 @@ Mujtaba Khider, Emily Noone, Neringa Šiugždinytė and Tom Wightman
 
 ### Roles & responsibilities of each member
 
-**Mujtaba** worked on...
+**Mujtaba** looked at demographic data, specifically factors surrounding sex and age of patient admissions over time. Mujtaba will also be looking at potential language integration with the dashboard, translating the origin text of English into Sudanese - this will be set as an additional feature if the MVP is met.
 
-**Emily** worked on exploring demographic data within NHS Scotland, considering...
+**Emily** worked on exploring demographic data within NHS Scotland, considering levels of deprivation within admittance. This will focus on identifying links between deprivation levels (income, location, well-being) and patient admissions. Emily also opened up a dialogue between Public Health Scotland in order to ascertain and specify datatypes within their datasets. 
 
-**Neringa** investigated the levels of capacity within acute hospital sector.
+**Neringa** investigated the levels of capacity within acute hospital sector during the year 2020. This includes the ratio of nursing staff to bed space, and available bed space within this sector. The focus will be on the change of these numbers throughout the winter taking into consideration the effects of the pandemic.
 
-**Tom** worked on initialising file structure and communication platform for task awareness and dissemination. Also began record if this document. 
+**Tom** worked on initiating file structure and communication platform for task awareness and dissemination and also began record if this document. He also investigated types of admissions specifically into Accident and Emergencies departments of hospitals across the time period of 2020 and subsequently into the winter period.
 
 **Everyone** explored the data in order to better understand what questions could be asked, while always maintaining a major theme derived from the initial requirement of the dashboard.
 
