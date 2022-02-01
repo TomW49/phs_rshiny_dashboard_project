@@ -57,4 +57,28 @@ server <- function(input, output) {
         subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)\n"
       )
   })
+  
+  output$ <- renderPlot({
+    
+  
+    
+    
+    
+    
+    
+   
+    
+   
+    
+  
+    demographics_age %>% 
+      ggplot(aes(x = age, y = total_stays)) +
+      geom_col(aes(fill = age))
+    
+   
+}
+output$ <- renderPlot({
+demographics_sex %>% 
+  ggplot(aes(x = sex, y = total_stays)) +
+  geom_col(aes(fill = sex))
 }
