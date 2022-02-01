@@ -8,11 +8,6 @@ server <- function(input, output) {
       ggplot(aes(x = quarter, y = avg)) +
       geom_line(group = 1, colour = "steelblue") + 
       geom_point(colour = "steelblue") +
-      geom_text(data = percentage_label,
-                aes(label = str_c(round(avg), "%")),
-                nudge_y = 2.3,
-                nudge_x = 0.3,
-                colour = "steelblue") +
       scale_y_continuous(limits = c(50, 100),
                          labels = scales::percent_format(scale = 1)) +
       labs(
@@ -22,8 +17,9 @@ server <- function(input, output) {
       ) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1),
-            axis.title = element_text(colour = "grey15"),
-            plot.title = element_text(colour = "grey25"))
+            axis.text = element_text(size = 6),
+            axis.title = element_text(size = 8, colour = "grey15"),
+            plot.title = element_text(size = 10, colour = "grey25"))
     ggplotly(p) %>% config(displayModeBar = F)
   })
   
