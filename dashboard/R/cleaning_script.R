@@ -59,7 +59,7 @@ pal <- colorFactor(
               "#003893", "#56008c", "#a00054",
               "#931638", "#d81e05", "#d81e05",
               "#f7e214", "#c466ff"),
-  domain = test$health_board)
+  domain = admissions_ae$health_board)
 
 # removing locations as not required further for project 
 rm(locations)
@@ -93,23 +93,44 @@ percentage_label <- capacity_general %>%
 
 #-----------------------------------------------------------------------------#
 
-#demographics
-#count the number of missing value
-
-age_sex %>%
-  select(Age) %>%
-  filter(is.na(age_sex)) %>%
-  summarise(count_of_missing_age = n())
-
-
-#-----------------------------------------------------------------------------#
-
 #Deprivation data
 
 #making a set which looks at quarter and simd and groups them
-simd_quarter <- read_csv(here("../raw_data/treatment_and_deprivation.csv")) %>%
+simd_quarter <- read_csv(here("../raw_data/treatment_and_deprevation.csv")) %>%
   clean_names() %>%
   group_by(quarter) %>%
   count(simd)
+
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#D55E00", "#0072B2", "#D55E00", "#CC79A7")
+
+#-----------------------------------------------------------------------------#
+
+#demographics
+#count the number of missing value
+demographics<- 
+  read_csv(here("../raw_data/treatment_age_and_sex.csv"))%>% 
+  clean_names()
+#filtering the data by age
+demographics_sex <- demographics %>% 
+  mutate(q = case_when(
+    str_detect(quarter, "Q1") ~ "Q1",
+    str_detect(quarter, "Q2") ~ "Q2",
+    str_detect(quarter, "Q3") ~ "Q3",
+    str_detect(quarter, "Q4") ~ "Q4"
+  )) %>%
+  filter(q == "Q1") %>% 
+  group_by(sex) %>% 
+  summarise(total_stays = sum(stays))
+# filtering the data by sex
+demographics_age <- demographics %>% 
+  mutate(q = case_when(
+    str_detect(quarter, "Q1") ~ "Q1",
+    str_detect(quarter, "Q2") ~ "Q2",
+    str_detect(quarter, "Q3") ~ "Q3",
+    str_detect(quarter, "Q4") ~ "Q4"
+  )) %>%
+  filter(q == "Q1") %>% 
+  group_by(age) %>% 
+  summarise(total_stays = sum(stays))
 
 
