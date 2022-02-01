@@ -2,7 +2,9 @@ library(here)
 library(janitor)
 library(sf)
 
-#PREPARING DATA FOR JOIN
+#-----------------------------------------------------------------------------#
+
+# A&E admissions, Geospatial prep
 
 # renaming variables
 # removing S319H (Little France, Edinburgh Children hospital) as no coords
@@ -54,3 +56,14 @@ nhs_scotland_medical_centre_loc <-
 # removing locations as not required further for project 
 rm(locations)
 rm(health_boards)
+
+#-----------------------------------------------------------------------------#
+
+# Capacity
+
+capacity_general <- 
+  read_csv("raw_data/bed_by_board_of_treatment_and_speciality.csv") %>% 
+  janitor::clean_names() %>%
+  filter(is.na(location_qf),
+         specialty_name == "All Acute")
+
