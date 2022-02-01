@@ -1,36 +1,28 @@
-ui <- fluidPage(
-  
-  # Application title
-  titlePanel(""),
-  
-  #tags$h1 makes header
-  titlePanel(tags$h1("Winter's effect on the NHS")),
-  
-  theme = shinytheme("paper"),
-  
-  fluidRow(
-    column(4
-           
-    ),
-    column(4
-           
-    ),
-    column(4
-           
-    )
-  ),
-  
-  fluidRow(
-    column(5,
-           plotOutput(outputId = "capacity_plot", height = 300),
-           plotOutput(outputId = "simd_quarter", height = 300)
-    ),
-    column(3,
-           plotOutput(outputId = "sex_plot", height = 300),
-           plotOutput(outputId = "age_plot", height = 300)
-    ),
-    column(4,
-           leafletOutput(outputId = "admissions_ae", height = 600)
+ui <- dashboardPage(
+  dashboardHeader(title = "Basic dashboard"),
+  dashboardSidebar(disable = TRUE),
+  dashboardBody(
+    
+    fluidRow(
+      column(8,
+             fluidRow(
+               box(plotOutput(outputId = "simd_quarter", height = 280),
+                   width = 8, height = 300),
+               box(plotOutput(outputId = "sex_plot", height = 280), 
+                   width = 4, height = 300)
+             ),
+             fluidRow(
+               box(plotOutput(outputId = "capacity_plot", height = 280),
+                   width = 7, height = 300),
+               box(plotOutput(outputId = "age_plot", height = 280), 
+                   width = 5, height = 300)
+             )
+      ),
+      column(4,
+             box(leafletOutput(outputId = "admissions_ae", height = 600),
+                 width = NULL, height = 620)
+      )
     )
   )
 )
+
