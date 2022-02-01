@@ -7,6 +7,7 @@ ui <- dashboardPage(
       infoBox("Title", 
               value = icon("angle-up"), 
               "7%", 
+              width = 3,
               icon = icon("ambulance"))
     ),
     
@@ -19,8 +20,7 @@ ui <- dashboardPage(
                    width = 4, height = 300)
              ),
              fluidRow(
-               box(plotlyOutput(outputId = "capacity_plot",
-                              height = 280),
+               box(plotlyOutput(outputId = "capacity_plot", height = 280),
                    width = 7, height = 300),
                box(plotOutput(outputId = "age_plot", height = 280), 
                    width = 5, height = 300)
@@ -42,7 +42,7 @@ ui <- dashboardPage(
       box(title = "Glossary",
           collapsible = TRUE,
           "blah blah blah"
-        )
+      )
     )
   )
 )
