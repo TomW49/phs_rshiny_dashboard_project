@@ -69,3 +69,12 @@ capacity_general <-
   filter(is.na(location_qf),
          specialty_name == "All Acute")
 
+#-----------------------------------------------------------------------------
+
+#demographics
+#count the numbwer of missing falue
+
+age_sex %>%
+  select(Age) %>%
+  filter(is.na(age_sex)) %>%
+  summarise(count_of_missing_age = n())
