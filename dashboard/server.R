@@ -86,12 +86,12 @@ server <- function(input, output) {
       geom_col(aes(fill = age),
                show.legend = FALSE) +
       labs(
-        x = "Age Group",
+        x = "Age Years",
         y = "Total Stays",
         title = ""
       ) +
       theme_minimal() +
-      theme(axis.text.x = element_text(angle = 90))
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
   })
   
   output$sex_plot <- renderPlot({
@@ -105,7 +105,6 @@ server <- function(input, output) {
         y = "Total Stays",
         title = ""
       ) +
-      theme_minimal() +
-      theme(axis.text.x = element_text(angle = 90))
+      theme_minimal()
   })
 }
