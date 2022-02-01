@@ -1,5 +1,5 @@
 ---
-title: "Project Description Outline"
+title: "Project Description Outline - Public Health Scotland"
 output:
   html_document:
     df_print: paged 
@@ -10,29 +10,24 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Names of group members
+### Project Team
 
 Mujtaba Khider, Emily Noone, Neringa Šiugždinytė and Tom Wightman
 
-### Roles & responsibilities of each member
-
-**Mujtaba** looked at demographic data, specifically factors surrounding sex and age of patient admissions over time. Mujtaba will also be looking at potential language integration with the dashboard, translating the origin text of English into Sudanese - this will be set as an additional feature if the MVP is met.
-
-**Emily** worked on exploring demographic data within NHS Scotland, considering levels of deprivation within admittance. This will focus on identifying links between deprivation levels (income, location, well-being) and patient admissions. Emily also opened up a dialogue between Public Health Scotland in order to ascertain and specify datatypes within their datasets. 
-
-**Neringa** investigated the levels of capacity within acute hospital sector during the year 2020. This includes the ratio of nursing staff to bed space, and available bed space within this sector. The focus will be on the change of these numbers throughout the winter taking into consideration the effects of the pandemic.
-
-**Tom** worked on initiating file structure and communication platform for task awareness and dissemination and also began record if this document. He also investigated types of admissions specifically into Accident and Emergencies departments of hospitals across the time period of 2020 and subsequently into the winter period.
-
-**Everyone** explored the data in order to better understand what questions could be asked, while always maintaining a major theme derived from the initial requirement of the dashboard.
-
 ### Brief description of dashboard topic
 
-Our dashboard contains ...
+Our dashboard focusses on the impact that past winters have had on NHS Scotland with regards to demographics, medical centre capacity and volume of admissions. Our data is openly sourced and can be found on the Public Health Scotland (PHS) website. The data specifically looks at acute admissions within secondary care within NHS Scotland. This consists of data from 14 health boards and over 250 individual medical centres.
 
-Our topic is ...
+Our theme for the project is to look at the trends of admissions over 5 years, with a deeper investigation on the winter of 2020 moving into 2021. Below is our basis to our theme:
 
-The dashboard outlines our topic in terms of ...
+>Consider the impact that winter may have on the health care , primarily the hospital (acute care) sector. To what extent is the ‘winter crises’ the media predicts real? How has winter impacted NHS Scotland’s hospital system in the past? Why might it be even more critical in the coming year and might the pandemic influence the potential scenario.
+
+The dashboard outlines our topic as follows:
+
+* Ages and genders of admissions into NHS Scotland as a whole over *x* period. This is to identify what demographics are driving the activity within the hospitals. 
+* The activity we are going to look at is bed space occupancy. More specifically the percentage of the full capacity the medical centres maintain over the years. This enables us to identify seasonal trends and potentially forecast the effect of the future winter period. 
+* Deprivation levels of patients admitted into NHS Scotland. The aim here is to identify whether or not factors such as income, well-being and education are evidential for admittance levels within hospitals. This will provide a potential area of focus for the NHS/government to prevent levels of required secondary care. 
+* Lastly, the dashboard will own an interactive map showing the medical centres Accident and Emergency (A&E) intake over the winter of 2020 into 2021. The health board will also be identified with colour for ease of reference, and radius of markers denoting intake levels. This data will provide insight into which geographical areas need more focus on to cope with the demands of a winter season.
 
 ### Stages of the project
 
@@ -52,6 +47,18 @@ The dashboard outlines our topic in terms of ...
 * Final sweep through of documentation, dashboard process and presentation
 * Deliver products
 
+### Roles & responsibilities of each member
+
+**Mujtaba** looked at demographic data, specifically factors surrounding sex and age of patient admissions over time. Mujtaba will also be looking at potential language integration with the dashboard, translating the origin text of English into Sudanese - this will be set as an additional feature if the MVP is met. Mujtaba also explored the media's reports of the "winter crisis", enabling us to use our extracted and displayed data to provide insights into the claims.
+
+**Emily** worked on exploring demographic data within NHS Scotland, considering levels of deprivation within admittance. This will focus on identifying links between deprivation levels (income, location, well-being) and patient admissions. Emily also opened up a dialogue between Public Health Scotland in order to ascertain and specify datatypes within their datasets. She also looked into statistical data regarding differences in A&E admissions over winter, and used her creativeness and intuition to create the info-graphs on the dashboard. The presentation was also initiated by Emily.
+
+**Neringa** investigated the levels of capacity within acute hospital sector during the year 2020. This includes the ratio of nursing staff to bed space, and available bed space within this sector. The focus will be on the change of these numbers throughout the winter taking into consideration the effects of the pandemic. Neringa also worked predominantly on the UI, maintaining receptiveness to the group during the development of the dashboard. She proved to be a key player in bringing the coding efforts of the team together.
+
+**Tom** worked on initiating file structure and communication platform for task awareness and dissemination and also began record if this document. He also investigated numbers of admissions specifically into Accident and Emergency departments of hospitals in the winter period of 2020. This was then communicated on a geo-spatial plot to highlight where the 14 different NHS Scotland Health Board's are and how each medical centre coped with its A&E intake over winter 2020. He also kept documents up to date, enabled daily goals and timelines as agreed upon by the team.
+
+**Everyone** explored the data in order to better understand what questions could be asked, while always maintaining a major theme derived from the initial requirement of the dashboard. The wire framing was a collective effort and remained a fluid entity until the creation of the dashboard. Everyone was kept informed at all times and communication levels were high, maintaining contact all throughout the working day. Idea's were born, reviewed and implemented by all.
+
 ### Which tools were used in the project
 
 * Zoom 
@@ -67,7 +74,16 @@ We prioritised exploring and understanding our capabilities with the data provid
 
 ### Motivations for using the data you have chosen
 
-We used the dataset on ... to answer ... and because it was ...
+We used the datasets on:
+
+* [Activity by Board of Treatment and Specialty](https://www.opendata.nhs.scot/dataset/inpatient-and-daycase-activity/resource/c3b4be64-5fb4-4a2f-af41-b0012f0a276a) (showing occupancy rates)
+* [Activity by Board of Treatment, Age and Sex](https://www.opendata.nhs.scot/dataset/inpatient-and-daycase-activity/resource/00c00ecc-b533-426e-a433-42d79bdea5d4), showing demographic data.
+* [Activity by Board of Treatment and Deprivation](https://www.opendata.nhs.scot/dataset/inpatient-and-daycase-activity/resource/4fc640aa-bdd4-4fbe-805b-1da1c8ed6383), showing deprivation levels within patients.
+* [Monthly Emergency Department Activity and Waiting Times](https://www.opendata.nhs.scot/dataset/monthly-emergency-department-activity-and-waiting-times), A&E activity over healthboards and medical centres.
+* [Health Board 2014 - Health Board 2019](https://www.opendata.nhs.scot/dataset/geography-codes-and-labels/resource/652ff726-e676-4a20-abda-435b98dd7bdc), showing geographical data on Health Boards
+* [Current NHS Hospitals in Scotland](https://www.opendata.nhs.scot/dataset/hospital-codes/resource/c698f450-eeed-41a0-88f7-c1e40a568acc), showing individual geographical data on medical centres.
+
+As described, these were chosen for their content that directly relates to our lines of enquiry in addition to the specifically proposed question to us.
 
 ### Data quality and potential bias, including a brief summary of data cleaning and transformations
 
