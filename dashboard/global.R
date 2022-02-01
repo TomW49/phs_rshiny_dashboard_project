@@ -3,5 +3,6 @@ library(here)
 library(janitor)
 library(sf)
 library(shiny)
+library(leaflet)
 
-source(here("dashboard/R/cleaning_script.R"))
+source(here("R/cleaning_script.R"))
