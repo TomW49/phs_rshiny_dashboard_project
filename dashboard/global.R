@@ -1,5 +1,3 @@
-library(tidyverse)
-
-source("dashboard/R/cleaning_script.R")
+source("R/cleaning_script.R")
 
 

@@ -3,19 +3,17 @@ library(here)
 library(janitor)
 library(sf)
 
-
 #-----------------------------------------------------------------------------#
 
 # A&E admissions, Geospatial prep
 
 # renaming variables
 # removing S319H (Little France, Edinburgh Children hospital) as no coords
-# removing unneeded cols
+
 locations <- read_csv(here("../raw_data/nhs_medicalcentres.csv")) %>%
   clean_names() %>%
   rename(treatment_location = location, health_board = hb) %>% 
-  filter(treatment_location != "S319H") %>%
-  select(!c(1, 7:17))
+  filter(treatment_location != "S319H")
 
 # generating lat lon from British National Grid
 coords <- locations %>%
@@ -23,6 +21,10 @@ coords <- locations %>%
   st_transform(4326) %>%
   st_coordinates() %>%
   as_tibble()
+
+# removing unneeded cols
+locations <- locations %>% 
+  select(!c(1, 7:17))
 
 # removing unneeded cols
 # renaming variables in health board for join
@@ -58,6 +60,7 @@ nhs_scotland_medical_centre_loc <-
 # removing locations as not required further for project 
 rm(locations)
 rm(health_boards)
+rm(coords)
 
 #-----------------------------------------------------------------------------#
 
@@ -65,7 +68,7 @@ rm(health_boards)
 
 capacity_general <- 
   read_csv(here("../raw_data/bed_by_board_of_treatment_and_speciality.csv")) %>% 
-  janitor::clean_names() %>%
+  clean_names() %>%
   filter(is.na(location_qf),
          specialty_name == "All Acute")
 
