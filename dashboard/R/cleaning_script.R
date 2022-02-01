@@ -107,7 +107,7 @@ age_sex %>%
 #Deprivation data
 
 #making a set which looks at quarter and simd and groups them
-simd_quarter <- read_csv(here("raw_data/treatment_and_deprivation.csv")) %>%
+simd_quarter <- read_csv(here("../raw_data/treatment_and_deprivation.csv")) %>%
   clean_names() %>%
   group_by(quarter) %>%
   count(simd)
