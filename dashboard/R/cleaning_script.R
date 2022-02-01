@@ -1,8 +1,3 @@
-library(tidyverse)
-library(here)
-library(janitor)
-library(sf)
-
 #-----------------------------------------------------------------------------#
 
 # A&E admissions, Geospatial prep
