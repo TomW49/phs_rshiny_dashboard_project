@@ -40,4 +40,21 @@ server <- function(input, output) {
                  popup = ~ location_name
       )
   })
+  
+  output$simd_quarter <- renderPlot({
+    
+    simd_quarter %>%
+      ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
+      geom_line() +
+      scale_color_manual(values = cbbPalette) +
+      theme_light() +
+      theme(axis.text.x = element_text(angle = 90)) +
+      labs(
+        x = "\nQuarter and Year",
+        y = "Count of individuals in each SIMD\n",
+        colour = "SIMD",
+        title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
+        subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)\n"
+      )
+  })
 }

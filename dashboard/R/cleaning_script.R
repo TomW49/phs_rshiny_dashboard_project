@@ -101,6 +101,8 @@ simd_quarter <- read_csv(here("../raw_data/treatment_and_deprevation.csv")) %>%
   group_by(quarter) %>%
   count(simd)
 
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#D55E00", "#0072B2", "#D55E00", "#CC79A7")
+
 #-----------------------------------------------------------------------------#
 
 #demographics
