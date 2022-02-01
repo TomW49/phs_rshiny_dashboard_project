@@ -95,12 +95,29 @@ percentage_label <- capacity_general %>%
 
 #demographics
 #count the number of missing value
-
-age_sex %>%
-  select(Age) %>%
-  filter(is.na(age_sex)) %>%
-  summarise(count_of_missing_age = n())
-
+demographics<- read_csv(here::here("~/Documents/codeclan/phs_rshiny_dashboard_project/raw_data/treatment_age_and_sex.csv")) %>% clean_names()
+#filtering the data by age
+demographics_sex <- demographics %>% 
+  mutate(q = case_when(
+    str_detect(quarter, "Q1") ~ "Q1",
+    str_detect(quarter, "Q2") ~ "Q2",
+    str_detect(quarter, "Q3") ~ "Q3",
+    str_detect(quarter, "Q4") ~ "Q4"
+  )) %>%
+  filter(q == "Q1") %>% 
+  group_by(sex) %>% 
+  summarise(total_stays = sum(stays))
+# filtering the data by sex
+demographics_age <- demographics %>% 
+  mutate(q = case_when(
+    str_detect(quarter, "Q1") ~ "Q1",
+    str_detect(quarter, "Q2") ~ "Q2",
+    str_detect(quarter, "Q3") ~ "Q3",
+    str_detect(quarter, "Q4") ~ "Q4"
+  )) %>%
+  filter(q == "Q1") %>% 
+  group_by(age) %>% 
+  summarise(total_stays = sum(stays))
 
 #-----------------------------------------------------------------------------#
 
