@@ -1,42 +1,33 @@
 ui <- fluidPage(
   
   # Application title
-  titlePanel(""),  theme = shinytheme("cyborg"),
+  titlePanel(""),
   
   #tags$h1 makes header
   titlePanel(tags$h1("Winter's effect on the NHS")),
-
+  
   fluidRow(
-    column(
-      
+    column(4
+           
     ),
-    column(
-      
+    column(4
+           
     ),
-    column(
-      
+    column(4
+           
     )
   ),
   
   fluidRow(
-    column(
-      fluidRow(
-        
-      ),
-      fluidRow(
-        
-      )
+    column(5,
+           plotOutput(outputId = "capacity_plot", height = 250),
+           plotOutput(outputId = "simd_quarter", height = 250)
     ),
-    column(
-      fluidRow(
-        
-      ),
-      fluidRow(
-        plotOutput(outputId = "capacity_plot")
-      )
+    column(3,
+           
     ),
-    column(
-      
+    column(4,
+           leafletOutput(outputId = "admissions_ae", height = 500)
     )
   )
 )
