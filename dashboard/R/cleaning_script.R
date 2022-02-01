@@ -133,6 +133,10 @@ demographics_age <- demographics %>%
     str_detect(quarter, "Q3") ~ "Q3",
     str_detect(quarter, "Q4") ~ "Q4"
   )) %>%
+  mutate(age = str_remove(age, " years(.*)"),
+         age = if_else(age == "90",
+                       "89<",
+                       age)) %>% 
   filter(q == "Q1") %>% 
   group_by(age) %>% 
   summarise(total_stays = sum(stays))
