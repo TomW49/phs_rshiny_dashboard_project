@@ -1,6 +1,6 @@
 server <- function(input, output) {
   
-  output$capacity_plot <- renderPlot({
+  output$capacity_plot <- renderPlotly({
     
     capacity_general %>% 
       group_by(quarter) %>% 
