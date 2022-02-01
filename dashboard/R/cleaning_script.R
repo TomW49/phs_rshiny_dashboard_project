@@ -70,11 +70,26 @@ rm(coords)
 
 # Capacity
 
+# clean data
+
 capacity_general <- 
   read_csv(here("../raw_data/bed_by_board_of_treatment_and_speciality.csv")) %>% 
   clean_names() %>%
   filter(is.na(location_qf),
          specialty_name == "All Acute")
+
+# data for plot geom_text
+
+percentage_label <- capacity_general %>% 
+  mutate(q = case_when(
+    str_detect(quarter, "Q1") ~ "Q1",
+    str_detect(quarter, "Q2") ~ "Q2",
+    str_detect(quarter, "Q3") ~ "Q3",
+    str_detect(quarter, "Q4") ~ "Q4"
+  )) %>%
+  filter(q == "Q1") %>% 
+  group_by(quarter) %>% 
+  summarise(avg = mean(percentage_occupancy))
 
 #-----------------------------------------------------------------------------#
 
