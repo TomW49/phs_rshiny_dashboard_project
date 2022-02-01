@@ -2,9 +2,9 @@ server <- function(input, output) {
   
   output$capacity_plot <- renderPlotly({
     
-    capacity_general %>% 
+    p <- capacity_general %>% 
       group_by(quarter) %>% 
-      summarise(avg = mean(percentage_occupancy)) %>% 
+      summarise(avg = mean(percentage_occupancy)) %>%
       ggplot(aes(x = quarter, y = avg)) +
       geom_line(group = 1, colour = "steelblue") + 
       geom_point(colour = "steelblue") +
@@ -15,27 +15,6 @@ server <- function(input, output) {
                 colour = "steelblue") +
       scale_y_continuous(limits = c(50, 100),
                          labels = scales::percent_format(scale = 1)) +
-      scale_x_discrete(labels = c("2016Q2" = "'16 Q2",
-                       "2016Q3" = "Q3",
-                       "2016Q4" = "Q4",
-                       "2017Q1" = "'17 Q1",
-                       "2017Q2" = "Q2",
-                       "2017Q3" = "Q3",
-                       "2017Q4" = "Q4",
-                       "2018Q1" = "'18 Q1",
-                       "2018Q2" = "Q2",
-                       "2018Q3" = "Q3",
-                       "2018Q4" = "Q4",
-                       "2019Q1" = "'19 Q1",
-                       "2019Q2" = "Q2",
-                       "2019Q3" = "Q3",
-                       "2019Q4" = "Q4",
-                       "2020Q1" = "'20 Q1",
-                       "2020Q2" = "Q2",
-                       "2020Q3" = "Q3",
-                       "2020Q4" = "Q4",
-                       "2021Q1" = "'21 Q1",
-                       "2021Q2" = "Q2")) +
       labs(
         x = "Quarter",
         y = "Occupancy",
@@ -45,6 +24,7 @@ server <- function(input, output) {
       theme(axis.text.x = element_text(angle = 45, hjust = 1),
             axis.title = element_text(colour = "grey15"),
             plot.title = element_text(colour = "grey25"))
+    ggplotly(p) %>% config(displayModeBar = F)
   })
   
   output$admissions_ae <- renderLeaflet({
