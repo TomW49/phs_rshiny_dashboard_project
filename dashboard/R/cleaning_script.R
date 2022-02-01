@@ -107,7 +107,9 @@ cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#D55E00", "#0072B2"
 
 #demographics
 #count the number of missing value
-demographics<- read_csv(here::here("~/Documents/codeclan/phs_rshiny_dashboard_project/raw_data/treatment_age_and_sex.csv")) %>% clean_names()
+demographics<- 
+  read_csv(here("../raw_data/treatment_age_and_sex.csv"))%>% 
+  clean_names()
 #filtering the data by age
 demographics_sex <- demographics %>% 
   mutate(q = case_when(
