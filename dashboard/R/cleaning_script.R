@@ -59,7 +59,7 @@ pal <- colorFactor(
               "#003893", "#56008c", "#a00054",
               "#931638", "#d81e05", "#d81e05",
               "#f7e214", "#c466ff"),
-  domain = test$health_board)
+  domain = admissions_ae$health_board)
 
 # removing locations as not required further for project 
 rm(locations)
@@ -93,6 +93,16 @@ percentage_label <- capacity_general %>%
 
 #-----------------------------------------------------------------------------#
 
+#Deprivation data
+
+#making a set which looks at quarter and simd and groups them
+simd_quarter <- read_csv(here("../raw_data/treatment_and_deprevation.csv")) %>%
+  clean_names() %>%
+  group_by(quarter) %>%
+  count(simd)
+
+#-----------------------------------------------------------------------------#
+
 #demographics
 #count the number of missing value
 demographics<- read_csv(here::here("~/Documents/codeclan/phs_rshiny_dashboard_project/raw_data/treatment_age_and_sex.csv")) %>% clean_names()
@@ -118,15 +128,5 @@ demographics_age <- demographics %>%
   filter(q == "Q1") %>% 
   group_by(age) %>% 
   summarise(total_stays = sum(stays))
-
-#-----------------------------------------------------------------------------#
-
-#Deprivation data
-
-#making a set which looks at quarter and simd and groups them
-simd_quarter <- read_csv(here("../raw_data/treatment_and_deprivation.csv")) %>%
-  clean_names() %>%
-  group_by(quarter) %>%
-  count(simd)
 
 
