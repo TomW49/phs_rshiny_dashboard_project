@@ -25,4 +25,19 @@ server <- function(input, output) {
             axis.title = element_text(colour = "grey15"),
             plot.title = element_text(colour = "grey25"))
   })
+  
+  output$admissions_ae <- renderPlot({
+    
+    admissions_ae %>%
+      filter(str_detect(month, c("202101", "202102", "202103")))  %>%
+      leaflet() %>%
+      addTiles() %>%
+      addCircles(lng = ~X,
+                 lat = ~Y,
+                 color = ~ pal(health_board),
+                 weight = 10,
+                 radius = ~number_of_attendances_aggregate,
+                 popup = ~ location_name
+      )
+  })
 }
