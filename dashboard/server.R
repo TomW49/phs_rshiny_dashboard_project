@@ -78,7 +78,7 @@ server <- function(input, output) {
         subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)"
       )
   })
-  
+
   output$age_plot <- renderPlot({
     
     demographics_age %>% 
@@ -90,7 +90,8 @@ server <- function(input, output) {
         y = "Total Stays",
         title = ""
       ) +
-      theme_minimal()
+      theme_minimal() +
+      theme(axis.text.x = element_text(angle = 90))
   })
   
   output$sex_plot <- renderPlot({
@@ -104,6 +105,7 @@ server <- function(input, output) {
         y = "Total Stays",
         title = ""
       ) +
-      theme_minimal()
+      theme_minimal() +
+      theme(axis.text.x = element_text(angle = 90))
   })
 }
