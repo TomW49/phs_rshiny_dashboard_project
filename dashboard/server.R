@@ -61,24 +61,16 @@ server <- function(input, output) {
   output$ <- renderPlot({
     
   
-    
-    
-    
-    
-    
-   
-    
-   
-    
-  
     demographics_age %>% 
       ggplot(aes(x = age, y = total_stays)) +
       geom_col(aes(fill = age))
-    
+    theme(axis.text.x = element_text(angle = 90)
    
 }
 output$ <- renderPlot({
 demographics_sex %>% 
   ggplot(aes(x = sex, y = total_stays)) +
-  geom_col(aes(fill = sex))
+  geom_col(aes(fill = sex))+
+    theme(axis.text.x = element_text(angle = 90)
+  
 }
