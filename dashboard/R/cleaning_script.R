@@ -23,7 +23,7 @@ locations <- locations %>%
 
 # removing unneeded cols
 # renaming variables in health board for join
-health_boards <- read_csv("../raw_data/nhs_healthboards.csv") %>%
+health_boards <- read_csv(here("../raw_data/nhs_healthboards.csv")) %>%
   clean_names() %>%
   select(2:3) %>% 
   rename(health_board = hb)
