@@ -18,7 +18,7 @@ server <- function(input, output) {
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1),
             axis.text = element_text(size = 6),
-            axis.title = element_text(size = 8, colour = "grey15"),
+            axis.title = element_text(size = 9, colour = "grey15"),
             plot.title = element_text(size = 10, colour = "grey25"))
     ggplotly(p) %>% config(displayModeBar = F)
   })
