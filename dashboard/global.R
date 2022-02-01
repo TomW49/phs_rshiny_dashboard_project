@@ -5,5 +5,6 @@ library(sf)
 library(shiny)
 library(shinydashboard)
 library(leaflet)
+library(plotly)
 
 source(here("R/cleaning_script.R"))
