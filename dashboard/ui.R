@@ -5,10 +5,15 @@ ui <- dashboardPage(
   dashboardBody(
     
     fluidRow(
-      column(9
-             # space for "about" box
+      column(8,
+             box(title = "About", width = NULL)
       ),
-      img(src = "phs-logo.png", height = 100, width = 250)
+      column(4,
+             box(img(src = "phs-logo.png", 
+                     height = "100%", 
+                     width = "100%"), 
+                 width = NULL)
+      )
     ),
     
     fluidRow(
