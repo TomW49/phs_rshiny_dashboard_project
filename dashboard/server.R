@@ -61,10 +61,11 @@ server <- function(input, output) {
       ggplot(aes(x = age, y = total_stays)) +
       geom_col(aes(fill = age),
                show.legend = FALSE) +
+      geom_col(colour = "dark green")+
       labs(
         x = "Age Years",
         y = "Total Stays",
-        title = ""
+        title = "Hospitalisations period ber age"
       ) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -79,7 +80,7 @@ server <- function(input, output) {
       labs(
         x = "Sex",
         y = "Total Stays",
-        title = ""
+        title = "Hospitalisations period ber gender"
       ) +
       theme_minimal()
   })
