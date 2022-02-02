@@ -41,6 +41,7 @@ server <- function(input, output) {
   output$simd_quarter <- renderPlot({
     
     simd_quarter %>%
+      filter(!is.na(SIMD)) %>%
       ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
       geom_line() +
       scale_color_manual(values = cbbPalette) +
