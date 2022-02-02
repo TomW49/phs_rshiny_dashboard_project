@@ -1,5 +1,6 @@
 ui <- dashboardPage(
-  dashboardHeader(title = "Basic dashboard"),
+  dashboardHeader(title = "NHS Scotland - \"The Winter Crisis\"",
+                  titleWidth = 350),
   dashboardSidebar(disable = TRUE),
   dashboardBody(
     
