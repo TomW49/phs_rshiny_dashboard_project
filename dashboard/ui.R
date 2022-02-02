@@ -8,7 +8,9 @@ ui <- dashboardPage(
               value = icon("angle-up"), 
               "7%", 
               width = 3,
-              icon = icon("ambulance"))
+              icon = icon("ambulance")),
+      column(6),
+      img(src = "phs-logo.png", height = 100, width = 250)
     ),
     
     fluidRow(
