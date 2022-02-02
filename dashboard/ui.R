@@ -43,6 +43,18 @@ ui <- dashboardPage(
               icon = icon("venus")),
     ),
     
+    selectInput("admission_input",
+                "Which Admission Type?",
+                choices = c("Elective Inpatients",
+                            "Emergency Inpatients",
+                            "Transfers",
+                            "All Day cases",
+                            "All Inpatients",
+                            "All Inpatients and Day cases",
+                            "Not Specified")
+    )
+  ),
+  
     fluidRow(
       column(8,
              fluidRow(
