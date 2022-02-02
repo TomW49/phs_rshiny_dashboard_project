@@ -74,4 +74,4 @@ ui <- dashboardPage(
 
 
 shinyApp(ui = ui, server = server)
->>>>>>> Stashed changes
+
