@@ -18,11 +18,29 @@ ui <- dashboardPage(
     
     fluidRow(
       # for info-boxes
-      infoBox("Title", 
+      infoBox("A%E Admissions increase from 2019 to 2020 winter", 
               value = icon("angle-up"), 
               "7%", 
               width = 3,
-              icon = icon("ambulance"))
+              icon = icon("ambulance")),
+      
+      infoBox("Demograpic count most effected by winter", 
+              value = icon("angle-up"), 
+              "70-79", 
+              width = 3,
+              icon = icon("male")),
+      
+      infoBox("Deprivation level most effected by winter", 
+              value = icon("angle-up"), 
+              "Level 3 (Medium deprivation)", 
+              width = 3,
+              icon = icon("house-user")),
+      
+      infoBox("Male vs Female average length of stay", 
+              value = icon("angle-up"), 
+              "Females stay longer", 
+              width = 3,
+              icon = icon("venus")),
     ),
     
     fluidRow(
