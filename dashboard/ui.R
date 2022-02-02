@@ -18,25 +18,25 @@ ui <- dashboardPage(
     
     fluidRow(
       # for info-boxes
-      infoBox("A%E Admissions increase from 2019 to 2020 winter", 
+      infoBox("A%E Admissions 2019 + 2020", 
               value = icon("angle-up"), 
               "7%", 
               width = 3,
               icon = icon("ambulance")),
       
-      infoBox("Demograpic count most effected by winter", 
+      infoBox("Demograpics effected", 
               value = icon("angle-up"), 
               "70-79", 
               width = 3,
               icon = icon("male")),
       
-      infoBox("Deprivation level most effected by winter", 
+      infoBox("Deprivation level effected", 
               value = icon("angle-up"), 
               "Level 3 (Medium deprivation)", 
               width = 3,
               icon = icon("house-user")),
       
-      infoBox("Male vs Female average length of stay", 
+      infoBox("Average stay male vs female", 
               value = icon("angle-up"), 
               "Females stay longer", 
               width = 3,
@@ -78,10 +78,9 @@ ui <- dashboardPage(
     
     fluidRow(
       tabBox(title = "Media Quotes",
-             tabPanel("The Sun", "Quotesudhfusdhfukshfkhsfk
-                      sufghhsdfuhsfuhsufhsuhfshf
-                      fsiudfidjfisefuoisf
-                      sfiojsifjsdfjf"),
+             tabPanel("BBC News", tags$h1("'Emergency department patients are waiting longer'"), 
+                      tags$a("BBC News website", href = "https://www.bbc.com/news/uk-scotland-58641817"), 
+                      tags$i("Our analyses confirms that this quote is true."),
              tabPanel("The Observer", "Quote")),
       box(title = "Glossary",
           collapsible = TRUE,
