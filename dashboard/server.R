@@ -80,7 +80,7 @@ server <- function(input, output) {
       labs(
         x = "Sex",
         y = "Total Stays",
-        title = "Hospitalisations period ber gender"
+        title = "Hospitalisations Period ber Gender"
       ) +
       theme_minimal()
   })
