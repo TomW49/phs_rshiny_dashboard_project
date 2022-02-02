@@ -4,13 +4,19 @@ ui <- dashboardPage(
   dashboardBody(
     
     fluidRow(
+      column(9
+             # space for "about" box
+      ),
+      img(src = "phs-logo.png", height = 100, width = 250)
+    ),
+    
+    fluidRow(
+      # for info-boxes
       infoBox("Title", 
               value = icon("angle-up"), 
               "7%", 
               width = 3,
-              icon = icon("ambulance")),
-      column(6),
-      img(src = "phs-logo.png", height = 100, width = 250)
+              icon = icon("ambulance"))
     ),
     
     fluidRow(
