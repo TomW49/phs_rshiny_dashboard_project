@@ -62,8 +62,15 @@ ui <- dashboardPage(
                    width = 4, height = 300)
              ),
              fluidRow(
-               box(plotlyOutput(outputId = "capacity_plot", height = 280),
-                   width = 7, height = 300),
+               box(
+                 plotlyOutput(outputId = "capacity_plot", height = 280),
+                 selectInput("specialty_input",
+                         label = "Select Specialty",
+                         choices = capacity_general %>% 
+                           distinct(specialty_name) %>% 
+                           pull(),
+                         width = NULL),
+                   width = 7, height = 370),
                box(plotOutput(outputId = "age_plot", height = 280), 
                    width = 5, height = 300)
              )
