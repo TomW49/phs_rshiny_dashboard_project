@@ -27,21 +27,21 @@ ui <- dashboardPage(
               color = "light-blue",
               icon = icon("ambulance")),
       
-      infoBox("Demographics winter admissions", 
+      infoBox("Demographics driver winter admissions", 
               value = "Males aged 70-79", 
-              "Every winter from 2016-2020", 
+              "Driver for winter admissions from 2016-2020", 
               width = 3,
               color = "light-blue",
               icon = icon("mars")),
       
-      infoBox("Deprivation admissions", 
-              value = "Level 3 (Medium deprivation)", "Every winter since 2016",
+      infoBox("Deprivation driver admissions", 
+              value = "Level 3 (Medium deprivation)", "Main driver every winter since 2016",
               width = 3,
               color = "light-blue",
               icon = icon("house-user")),
       
       infoBox("Average length of Stay between gender", 
-              value = "Females stayed 15% longer ", "Winter 2020",
+              value = "Females stayed 15% longer in winter", "Driver for length of stay",
               width = 3,
               color = "light-blue",
               icon = icon("venus"))
