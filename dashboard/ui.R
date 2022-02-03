@@ -48,7 +48,7 @@ ui <- dashboardPage(
              fluidRow(
                box(plotOutput(outputId = "simd_quarter", height = 250),
                    selectInput("admission_input",
-                               label = "Which Admission Type?",
+                               label = "Select Admission Type",
                                choices = c("Elective Inpatients",
                                            "Emergency Inpatients",
                                            "Transfers",
@@ -58,26 +58,26 @@ ui <- dashboardPage(
                                            "Not Specified"),
                                width = NULL),
                    width = 8, height = 325, style = "font-size:11px;"),
-               box(plotOutput(outputId = "sex_plot", height = 280), 
-                   width = 4, height = 300)
+               box(plotOutput(outputId = "sex_plot", height = 250), 
+                   width = 4, height = 325)
              ),
              fluidRow(
                box(
-                 plotlyOutput(outputId = "capacity_plot", height = 280),
+                 plotlyOutput(outputId = "capacity_plot", height = 250),
                  selectInput("specialty_input",
                          label = "Select Specialty",
                          choices = capacity_general %>% 
                            distinct(specialty_name) %>% 
                            pull(),
                          width = NULL),
-                   width = 7, height = 370),
-               box(plotOutput(outputId = "age_plot", height = 280), 
-                   width = 5, height = 300)
+                   width = 7, height = 325, style = "font-size:11px;"),
+               box(plotOutput(outputId = "age_plot", height = 250), 
+                   width = 5, height = 325)
              )
       ),
       column(4,
-             box(leafletOutput(outputId = "admissions_ae", height = 600),
-                 width = NULL, height = 620)
+             box(leafletOutput(outputId = "admissions_ae", height = 645),
+                 width = NULL, height = 670)
       )
     ),
     
