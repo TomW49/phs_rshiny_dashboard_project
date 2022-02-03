@@ -40,53 +40,53 @@ ui <- dashboardPage(
               value = icon("angle-up"), 
               "Females stay longer", 
               width = 3,
-              icon = icon("venus")),
+              icon = icon("venus"))
     ),
     
-    selectInput("admission_input",
-                "Which Admission Type?",
-                choices = c("Elective Inpatients",
-                            "Emergency Inpatients",
-                            "Transfers",
-                            "All Day cases",
-                            "All Inpatients",
-                            "All Inpatients and Day cases",
-                            "Not Specified")
-    )
-  ),
-  
     fluidRow(
       column(8,
              fluidRow(
                box(plotOutput(outputId = "simd_quarter", height = 280),
-                   width = 8, height = 300),
-               box(plotOutput(outputId = "sex_plot", height = 280), 
-                   width = 4, height = 300)
+                   selectInput("admission_input",
+                               label = "Which Admission Type?",
+                               choices = c("Elective Inpatients",
+                                           "Emergency Inpatients",
+                                           "Transfers",
+                                           "All Day cases",
+                                           "All Inpatients",
+                                           "All Inpatients and Day cases",
+                                           "Not Specified",
+                                           width = NULL),
+                               width = 8),
+                   box(plotOutput(outputId = "sex_plot", height = 280), 
+                       width = 4, height = 300)
+               ),
+               fluidRow(
+                 box(plotlyOutput(outputId = "capacity_plot", height = 280),
+                     width = 7, height = 300),
+                 box(plotOutput(outputId = "age_plot", height = 280), 
+                     width = 5, height = 300)
+               )
              ),
-             fluidRow(
-               box(plotlyOutput(outputId = "capacity_plot", height = 280),
-                   width = 7, height = 300),
-               box(plotOutput(outputId = "age_plot", height = 280), 
-                   width = 5, height = 300)
+             column(4,
+                    box(leafletOutput(outputId = "admissions_ae", height = 600),
+                        width = NULL, height = 620)
              )
       ),
-      column(4,
-             box(leafletOutput(outputId = "admissions_ae", height = 600),
-                 width = NULL, height = 620)
-      )
-    ),
-    
-    fluidRow(
-      tabBox(title = "Media Quotes",
-             tabPanel("BBC News", tags$h1("'Emergency department patients are waiting longer'"), 
-                      tags$a("BBC News website", href = "https://www.bbc.com/news/uk-scotland-58641817"), 
-                      tags$i("Our analyses confirms that this quote is true."),
-             tabPanel("The Observer", "Quote")),
-      box(title = "Glossary",
-          collapsible = TRUE,
-          "blah blah blah"
+      
+      fluidRow(
+        column(3),
+        column(6,
+               tabBox(tabPanel("BBC News", 
+                               tags$h1("'Emergency department patients are waiting longer'"), 
+                               tags$a("BBC News website", 
+                                      href = "https://www.bbc.com/news/uk-scotland-58641817"), 
+                               tags$i("Our analyses confirms that this quote is true.")),
+                      tabPanel("The Observer", "Quote"),
+                      width = NULL),
+               column(3)
+        )
       )
     )
   )
 )
-
