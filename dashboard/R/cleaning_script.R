@@ -75,8 +75,7 @@ rm(coords)
 capacity_general <- 
   read_csv(here("../raw_data/bed_by_board_of_treatment_and_speciality.csv")) %>% 
   clean_names() %>%
-  filter(is.na(location_qf),
-         specialty_name == "All Acute")
+  filter(is.na(location_qf))
 
 # data for plot geom_text
 
