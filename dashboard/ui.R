@@ -67,7 +67,8 @@ ui <- dashboardPage(
                                            "2018" = "2018Q1",
                                            "2019" = "2019Q1",
                                            "2020" = "2020Q1",
-                                           "2021" = "2021Q1")),
+                                           "2021" = "2021Q1"),
+                               selected = "2020Q1"),
                    width = 4, height = 325, style = "font-size:12px;")
              ),
              fluidRow(
@@ -88,7 +89,8 @@ ui <- dashboardPage(
                                            "2018" = "2018Q1",
                                            "2019" = "2019Q1",
                                            "2020" = "2020Q1",
-                                           "2021" = "2021Q1")),
+                                           "2021" = "2021Q1"),
+                               selected = "2020Q1"),
                    width = 5, height = 325, style = "font-size:12px;")
              )
       ),
