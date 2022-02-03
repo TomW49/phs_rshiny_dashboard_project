@@ -6,7 +6,8 @@ ui <- dashboardPage(
     
     fluidRow(
       column(8,
-             box(title = "About", width = NULL)
+             box(title = "About",
+                 width = NULL)
       ),
       column(4,
              box(img(src = "phs-logo.png", 
