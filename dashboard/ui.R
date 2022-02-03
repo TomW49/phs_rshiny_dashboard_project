@@ -46,7 +46,7 @@ ui <- dashboardPage(
     fluidRow(
       column(8,
              fluidRow(
-               box(plotOutput(outputId = "simd_quarter", height = 280),
+               box(plotOutput(outputId = "simd_quarter", height = 250),
                    selectInput("admission_input",
                                label = "Which Admission Type?",
                                choices = c("Elective Inpatients",
@@ -55,38 +55,38 @@ ui <- dashboardPage(
                                            "All Day cases",
                                            "All Inpatients",
                                            "All Inpatients and Day cases",
-                                           "Not Specified",
-                                           width = NULL),
-                               width = 8),
-                   box(plotOutput(outputId = "sex_plot", height = 280), 
-                       width = 4, height = 300)
-               ),
-               fluidRow(
-                 box(plotlyOutput(outputId = "capacity_plot", height = 280),
-                     width = 7, height = 300),
-                 box(plotOutput(outputId = "age_plot", height = 280), 
-                     width = 5, height = 300)
-               )
+                                           "Not Specified"),
+                               width = NULL),
+                   width = 8, height = 325, style = "font-size:11px;"),
+               box(plotOutput(outputId = "sex_plot", height = 280), 
+                   width = 4, height = 300)
              ),
-             column(4,
-                    box(leafletOutput(outputId = "admissions_ae", height = 600),
-                        width = NULL, height = 620)
+             fluidRow(
+               box(plotlyOutput(outputId = "capacity_plot", height = 280),
+                   width = 7, height = 300),
+               box(plotOutput(outputId = "age_plot", height = 280), 
+                   width = 5, height = 300)
              )
       ),
-      
-      fluidRow(
-        column(3),
-        column(6,
-               tabBox(tabPanel("BBC News", 
-                               tags$h1("'Emergency department patients are waiting longer'"), 
-                               tags$a("BBC News website", 
-                                      href = "https://www.bbc.com/news/uk-scotland-58641817"), 
-                               tags$i("Our analyses confirms that this quote is true.")),
-                      tabPanel("The Observer", "Quote"),
-                      width = NULL),
-               column(3)
-        )
+      column(4,
+             box(leafletOutput(outputId = "admissions_ae", height = 600),
+                 width = NULL, height = 620)
+      )
+    ),
+    
+    fluidRow(
+      column(3),
+      column(6,
+             tabBox(tabPanel("BBC News", 
+                             tags$h1("'Emergency department patients are waiting longer'"), 
+                             tags$a("BBC News website", 
+                                    href = "https://www.bbc.com/news/uk-scotland-58641817"), 
+                             tags$i("Our analyses confirms that this quote is true.")),
+                    tabPanel("The Observer", "Quote"),
+                    width = NULL),
+             column(3)
       )
     )
   )
 )
+
