@@ -3,6 +3,7 @@ server <- function(input, output) {
   output$capacity_plot <- renderPlotly({
     
     p <- capacity_general %>% 
+      filter(specialty_name == input$specialty_input) %>% 
       group_by(quarter) %>% 
       summarise(avg = mean(percentage_occupancy)) %>%
       ggplot(aes(x = quarter, y = avg)) +
@@ -13,12 +14,12 @@ server <- function(input, output) {
       labs(
         x = "Quarter",
         y = "Occupancy",
-        title = "Quarterly Hospital Occupancy (2016 - 2021)"
+        title = "Figure 2: Quarterly Hospital Occupancy (2016 - 2021)"
       ) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1),
             axis.text = element_text(size = 6),
-            axis.title = element_text(size = 9, colour = "grey15"),
+            axis.title = element_text(size = 8, colour = "grey15"),
             plot.title = element_text(size = 10, colour = "grey25"))
     ggplotly(p) %>% config(displayModeBar = F)
   })
@@ -34,56 +35,86 @@ server <- function(input, output) {
                  color = ~ pal(health_board),
                  weight = 10,
                  radius = ~number_of_attendances_aggregate,
-                 popup = ~ location_name
-      )
+                 popup = ~ location_name)
   })
   
   output$simd_quarter <- renderPlot({
     
-    simd_quarter %>%
-      filter(!is.na(simd)) %>%
-      filter(admission_type == input$admission_input) %>%
-      ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
-      geom_line() +
-      scale_color_manual(values = cbbPalette) +
-      theme_light() +
-      theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-      labs(
-        x = "Quarter and Year",
-        y = "Count of individuals in each SIMD",
-        colour = "SIMD",
-        title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
-        subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)"
-      )
-  })
-
-  output$age_plot <- renderPlot({
-    
-    demographics_age %>% 
-      ggplot(aes(x = age, y = total_stays)) +
-      geom_col(aes(fill = age),
-               show.legend = FALSE) +
-      geom_col(colour = "dark green")+
-      labs(
-        x = "Age Years",
-        y = "Total Stays",
-        title = "Hospitalisations period ber age"
-      ) +
-      theme_minimal() +
-      theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    if(input$admission_input == "All"){
+      simd_quarter %>%
+        filter(!is.na(simd)) %>%
+        group_by(quarter) %>%
+        count(simd) %>% 
+        ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
+        geom_line() +
+        scale_color_manual(values = cbbPalette) +
+        labs(
+          x = "Quarter and Year",
+          y = "Count of individuals in each SIMD",
+          colour = "SIMD",
+          title = "Figure 1: The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
+          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)"
+        ) +
+        theme_light() +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1),
+              axis.title = element_text(colour = "grey15"),
+              plot.title = element_text(colour = "grey25"),
+              plot.subtitle = element_text(colour = "grey25"))
+    } else {
+      simd_quarter %>%
+        filter(!is.na(simd)) %>%
+        group_by(quarter, admission_type) %>%
+        count(simd) %>% 
+        filter(admission_type == input$admission_input) %>%
+        ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
+        geom_line() +
+        scale_color_manual(values = cbbPalette) +
+        labs(
+          x = "Quarter and Year",
+          y = "Count of individuals in each SIMD",
+          colour = "SIMD",
+          title = "Figure 1: The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
+          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)"
+        ) +
+        theme_light() +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1),
+              axis.title = element_text(colour = "grey15"),
+              plot.title = element_text(colour = "grey25"),
+              plot.subtitle = element_text(colour = "grey25"))
+    }
   })
   
   output$sex_plot <- renderPlot({
     
     demographics_sex %>% 
+      filter(quarter == input$sex_year_input) %>% 
+      group_by(sex) %>% 
+      summarise(total_stays = sum(stays)) %>% 
       ggplot(aes(x = sex, y = total_stays)) +
       geom_col(aes(fill = sex),
                show.legend = FALSE) +
       labs(
         x = "Sex",
         y = "Total Stays",
-        title = "Hospitalisations Period ber Gender"
+        title = "Figure 3: Winter Hopsitalisations by Sex"
       ) +
       theme_minimal()
+  })
+  
+  output$age_plot <- renderPlot({
+    
+    demographics_age %>%
+      filter(quarter == input$age_year_input) %>% 
+      group_by(age) %>% 
+      summarise(total_stays = sum(stays)) %>% 
+      ggplot(aes(x = age, y = total_stays)) +
+      geom_col(show.legend = FALSE) +
+      labs(
+        x = "Age (Years)",
+        y = "Total Stays",
+        title = "Figure 4: Winter Hospitalisations by Age Group"
+      ) +
+      theme_minimal() +
+      theme(axis.text.x = element_text(angle = 45, hjust = 1))
   })
 }
