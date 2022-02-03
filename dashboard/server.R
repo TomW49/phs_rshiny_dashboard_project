@@ -48,8 +48,8 @@ server <- function(input, output) {
         scale_color_manual(values = cbbPalette) +
         scale_y_continuous(labels = scales::comma_format()) +
         labs(
-          x = "Quarter and Year",
-          y = "Count of stays in each SIMD",
+          x = "Quarter",
+          y = "Total Stays",
           colour = "SIMD"
         ) +
         theme_minimal() +
@@ -66,8 +66,8 @@ server <- function(input, output) {
         scale_color_manual(values = cbbPalette) +
         scale_y_continuous(labels = scales::comma_format()) +
         labs(
-          x = "Quarter and Year",
-          y = "Count of stays in each SIMD",
+          x = "Quarter",
+          y = "Total Stays",
           colour = "SIMD"
         ) +
         theme_minimal() +

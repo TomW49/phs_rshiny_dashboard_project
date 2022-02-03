@@ -50,7 +50,7 @@ ui <- dashboardPage(
     fluidRow(
       column(8,
              fluidRow(
-               box("Figure 1: The Count of Individuals in Each SIMD Across 2016 Q2 - 2021 Q2",
+               box("Figure 1: Total Count of Stays in Each SIMD Group (2016 - 2021)",
                    plotOutput(outputId = "simd_quarter", height = 230),
                    selectInput("admission_input",
                                label = "Select Admission Type",
