@@ -104,7 +104,11 @@ ui <- dashboardPage(
                              tags$a("BBC News website", 
                                     href = "https://www.bbc.com/news/uk-scotland-58641817"), 
                              tags$i("Our analyses confirms that this quote is true.")),
-                    tabPanel("The Observer", "Quote"),
+                    tabPanel("BBC News", 
+                             tags$h1("'A 30%-50% positive test rate was routinely seen in the older age groups'"),
+                             tags$a("BBC News website", 
+                                    href = "https://www.bbc.co.uk/news/uk-scotland-54059199"), 
+                             tags$i("Our analyses confirms that this quote is true.")),
                     width = NULL),
              column(3)
       )
