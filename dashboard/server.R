@@ -18,8 +18,7 @@ server <- function(input, output) {
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1),
             axis.text = element_text(size = 6),
-            axis.title = element_text(size = 8, colour = "grey15"),
-            plot.title = element_text(size = 10, colour = "grey25"))
+            axis.title = element_text(size = 8, colour = "grey15"))
     ggplotly(p) %>% config(displayModeBar = F)
   })
   
@@ -41,17 +40,16 @@ server <- function(input, output) {
     
     if(input$admission_input == "All"){
       simd_quarter %>%
-        filter(admission_type == input$admission_input) %>%
         group_by(quarter, simd) %>%
         summarise(stays = sum(stays)) %>%
         ggplot() +
         aes(x = quarter, y = stays, colour = as.factor(simd), group = simd) +
-        geom_line(group = 1) +
+        geom_line() +
         scale_color_manual(values = cbbPalette) +
         scale_y_continuous(labels = scales::comma_format()) +
         labs(
-          x = "\nQuarter and Year",
-          y = "Count of stays in each SIMD\n",
+          x = "Quarter and Year",
+          y = "Count of stays in each SIMD",
           colour = "SIMD"
         ) +
         theme_minimal() +
@@ -77,9 +75,7 @@ server <- function(input, output) {
       +
         theme_light() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1),
-              axis.title = element_text(colour = "grey15"),
-              plot.title = element_text(colour = "grey25"),
-              plot.subtitle = element_text(colour = "grey25"))
+              axis.title = element_text(colour = "grey15"))
     }
   })
   
