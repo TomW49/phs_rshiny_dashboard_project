@@ -22,22 +22,26 @@ ui <- dashboardPage(
       infoBox("A&E 2020 winter admissions", 
               value = "7% Increase", "since 2019 winter",
               width = 3,
+              color = "light-blue",
               icon = icon("ambulance")),
       
       infoBox("Demographics winter admissions", 
               value = "Males aged 70-79", 
               "every winter from 2016-2020", 
               width = 3,
+              color = "light-blue",
               icon = icon("male")),
       
       infoBox("Deprivation admissions", 
               value = "Level 3 (Medium deprivation)", "every winter since 2016",
               width = 3,
+              color = "light-blue",
               icon = icon("house-user")),
       
       infoBox("Average length of Stay between gender", 
               value = "Females stayed 15% longer ", "Winter 2020",
               width = 3,
+              color = "light-blue",
               icon = icon("venus"))
     ),
     
