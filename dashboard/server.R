@@ -3,6 +3,7 @@ server <- function(input, output) {
   output$capacity_plot <- renderPlotly({
     
     p <- capacity_general %>% 
+      filter(specialty_name == input$specialty_input) %>% 
       group_by(quarter) %>% 
       summarise(avg = mean(percentage_occupancy)) %>%
       ggplot(aes(x = quarter, y = avg)) +
@@ -61,11 +62,9 @@ server <- function(input, output) {
     
     demographics_age %>% 
       ggplot(aes(x = age, y = total_stays)) +
-      geom_col(aes(fill = age),
-               show.legend = FALSE) +
-      geom_col(colour = "dark green")+
+      geom_col(show.legend = FALSE) +
       labs(
-        x = "Age Years",
+        x = "Age (Years)",
         y = "Total Stays",
         title = "Hospitalisations period ber age"
       ) +
