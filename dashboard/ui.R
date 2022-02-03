@@ -6,7 +6,8 @@ ui <- dashboardPage(
     
     fluidRow(
       column(8,
-             box(title = "About",
+             box(about_info,
+                 title = "About",
                  width = NULL)
       ),
       column(4,
