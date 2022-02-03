@@ -37,7 +37,6 @@ server <- function(input, output) {
                  color = ~ pal(health_board),
                  weight = 10,
                  radius = ~number_of_attendances_aggregate,
-                 popup = ~ location_name
                  popup = ~ full_address
       )
   })
