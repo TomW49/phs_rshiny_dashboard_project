@@ -41,7 +41,6 @@ server <- function(input, output) {
     
     if(input$admission_input == "All"){
       simd_quarter %>%
-        filter(!is.na(simd)) %>%
         filter(admission_type == input$admission_input) %>%
         group_by(quarter, simd) %>%
         summarise(stays = sum(stays)) %>%
@@ -64,7 +63,6 @@ server <- function(input, output) {
               plot.subtitle = element_text(colour = "grey25"))
     } else {
       simd_quarter %>%
-        filter(!is.na(simd)) %>%
         group_by(quarter, simd) %>%
         summarise(stays = sum(stays)) %>%
         filter(admission_type == input$admission_input) %>%
