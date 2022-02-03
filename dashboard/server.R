@@ -42,12 +42,21 @@ server <- function(input, output) {
     if(input$admission_input == "All"){
       simd_quarter %>%
         filter(!is.na(simd)) %>%
-        group_by(quarter) %>%
-        count(simd) %>% 
-        ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
+        ggplot() +
+        aes(x = quarter, y = stays, colour = as.factor(simd), group = simd) +
         geom_line() +
         scale_color_manual(values = cbbPalette) +
+        scale_y_continuous(labels = scales::comma) +
+        theme_light() +
+        theme(axis.text.x = element_text(angle = 90)) +
         labs(
+          x = "\nQuarter and Year",
+          y = "Count of stays in each SIMD\n",
+          colour = "SIMD",
+          title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
+          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)\n"
+        )
+         +
           x = "Quarter and Year",
           y = "Count of individuals in each SIMD",
           colour = "SIMD"
@@ -60,6 +69,8 @@ server <- function(input, output) {
     } else {
       simd_quarter %>%
         filter(!is.na(simd)) %>%
+        ggplot() +
+        aes(x = quarter, y = stays, colour = as.factor(simd), group = simd) +
         group_by(quarter, admission_type) %>%
         count(simd) %>% 
         filter(admission_type == input$admission_input) %>%
@@ -67,7 +78,17 @@ server <- function(input, output) {
                    colour = as.factor(simd), group = simd)) +
         geom_line() +
         scale_color_manual(values = cbbPalette) +
+        scale_y_continuous(labels = scales::comma) +
+        theme_light() +
+        theme(axis.text.x = element_text(angle = 90)) +
         labs(
+          x = "\nQuarter and Year",
+          y = "Count of stays in each SIMD\n",
+          colour = "SIMD",
+          title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
+          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)\n"
+        )
+      +
           x = "Quarter and Year",
           y = "Count of individuals in each SIMD",
           colour = "SIMD"
