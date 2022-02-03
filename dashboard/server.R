@@ -50,13 +50,6 @@ server <- function(input, output) {
         theme_light() +
         theme(axis.text.x = element_text(angle = 90)) +
         labs(
-          x = "\nQuarter and Year",
-          y = "Count of stays in each SIMD\n",
-          colour = "SIMD",
-          title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
-          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)\n"
-        )
-         +
           x = "Quarter and Year",
           y = "Count of individuals in each SIMD",
           colour = "SIMD"
@@ -82,13 +75,6 @@ server <- function(input, output) {
         theme_light() +
         theme(axis.text.x = element_text(angle = 90)) +
         labs(
-          x = "\nQuarter and Year",
-          y = "Count of stays in each SIMD\n",
-          colour = "SIMD",
-          title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
-          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)\n"
-        )
-      +
           x = "Quarter and Year",
           y = "Count of individuals in each SIMD",
           colour = "SIMD"
@@ -111,12 +97,15 @@ server <- function(input, output) {
       geom_col(aes(y = total_stays, fill = sex),
                show.legend = FALSE) +
       geom_text(aes(y = total_stays * 0.95,
-                    label = total_stays),
-                colour = "white") +
-      scale_y_continuous(labels = scales::comma_format()) +
+                    label = format(total_stays, big.mark = ",")),
+                colour = "white",
+                size = 4.5) +
+      scale_y_continuous(limits = c(0, 1070000),
+                         labels = scales::comma_format()) +
       scale_fill_manual(values = c("indianred2", "steelblue")) +
       theme_minimal() +
       theme(axis.title = element_blank(),
+            axis.text.x = element_text(size = 9),
             axis.text.y = element_blank())
   })
   
@@ -131,7 +120,8 @@ server <- function(input, output) {
                                          FALSE)) %>% 
       ggplot(aes(x = age, y = total_stays, fill = highest_age_group)) +
       geom_col(show.legend = FALSE) +
-      scale_y_continuous(labels = scales::comma_format()) +
+      scale_y_continuous(limits = c(0, 450000),
+                         labels = scales::comma_format()) +
       scale_fill_manual(values = c("grey80", "indianred2")) +
       labs(
         x = "Age (Years)",
