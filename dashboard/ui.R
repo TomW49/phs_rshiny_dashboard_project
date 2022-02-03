@@ -6,7 +6,8 @@ ui <- dashboardPage(
     
     fluidRow(
       column(8,
-             box(title = "About", width = NULL)
+             box(title = "About",
+                 width = NULL)
       ),
       column(4,
              box(img(src = "phs-logo.png", 
@@ -43,15 +44,17 @@ ui <- dashboardPage(
     fluidRow(
       column(8,
              fluidRow(
-               box(plotOutput(outputId = "simd_quarter", height = 250),
+               box("Figure 1: The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
+                 plotOutput(outputId = "simd_quarter", height = 230),
                    selectInput("admission_input",
                                label = "Select Admission Type",
                                choices = c("All", simd_quarter %>% 
                                              distinct(admission_type) %>% 
                                              pull()),
                                width = NULL),
-                   width = 8, height = 325, style = "font-size:11px;"),
-               box(plotOutput(outputId = "sex_plot", height = 250), 
+                   width = 8, height = 325, style = "font-size:12px;"),
+               box("Figure 3: Winter Hopsitalisations by Sex",
+                   plotOutput(outputId = "sex_plot", height = 230), 
                    selectInput("sex_year_input",
                                label = "Select Year",
                                choices = c("2017" = "2017Q1",
@@ -59,19 +62,20 @@ ui <- dashboardPage(
                                            "2019" = "2019Q1",
                                            "2020" = "2020Q1",
                                            "2021" = "2021Q1")),
-                   width = 4, height = 325, style = "font-size:11px;")
+                   width = 4, height = 325, style = "font-size:12px;")
              ),
              fluidRow(
-               box(
-                 plotlyOutput(outputId = "capacity_plot", height = 250),
+               box("Figure 2: Quarterly Hospital Occupancy (2016 - 2021)",
+                 plotlyOutput(outputId = "capacity_plot", height = 230),
                  selectInput("specialty_input",
                          label = "Select Specialty",
                          choices = capacity_general %>% 
                            distinct(specialty_name) %>% 
                            pull(),
                          width = NULL),
-                   width = 7, height = 325, style = "font-size:11px;"),
-               box(plotOutput(outputId = "age_plot", height = 250), 
+                   width = 7, height = 325, style = "font-size:12px;"),
+               box("Figure 4: Winter Hospitalisations by Age Group",
+                   plotOutput(outputId = "age_plot", height = 230), 
                    selectInput("age_year_input",
                                label = "Select Year",
                                choices = c("2017" = "2017Q1",
@@ -79,7 +83,7 @@ ui <- dashboardPage(
                                            "2019" = "2019Q1",
                                            "2020" = "2020Q1",
                                            "2021" = "2021Q1")),
-                   width = 5, height = 325, style = "font-size:11px;")
+                   width = 5, height = 325, style = "font-size:12px;")
              )
       ),
       column(4,
