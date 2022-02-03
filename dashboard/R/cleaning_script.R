@@ -52,19 +52,25 @@ admissions_ae <-
 nhs_scotland_medical_centre_loc <- 
   left_join(locations, health_boards, by = "health_board") 
 
-# creating colour palette for map denoting NHS healthboards
-pal <- colorFactor(
-  palette = c("#006b54", "#009e49", "#5bbf21",
-              "#00aa9e", "#00adc6", "#0091c9",
-              "#003893", "#56008c", "#a00054",
-              "#931638", "#d81e05", "#d81e05",
-              "#f7e214", "#c466ff"),
-  domain = admissions_ae$health_board)
+# creating colour palette for map denoting NHS health boards
+hb_name_label <- admissions_ae %>% 
+  filter(!is.na(hb_name)) %>% 
+  distinct(hb_name)
+
+colours <- as.tibble(c("#006b54", "#009e49", "#5bbf21",
+                       "#00aa9e", "#00adc6", "#0091c9",
+                       "#003893", "#56008c", "#a00054",
+                       "#931638", "#d81e05", "#d81e05",
+                       "#f7e214", "#c466ff"))
+
+hb_name_colours <- bind_cols(hb_name_label, colours)
 
 # removing locations as not required further for project 
 rm(locations)
 rm(health_boards)
 rm(coords)
+rm(colours)
+rm(hb_name_label)
 
 #-----------------------------------------------------------------------------#
 
