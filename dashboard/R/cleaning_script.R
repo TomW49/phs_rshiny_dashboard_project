@@ -136,7 +136,7 @@ demographics_age <- demographics %>%
 #-----------------------------------------------------------------------------#
 
 about_info <- "In late 2019, as word spread of the emergence of a virus with unknown 
-severity and infectiousness across the globe so too did the very same virus; COVID-19. 
+severity and infectiousness across the globe, so too did the very same virus; COVID-19. 
 Government authorities appeared to stumble and stutter in response, some less 
 so than other's, in efforts to maintain the health and well-being of their countries.
 
