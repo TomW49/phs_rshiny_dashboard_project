@@ -13,8 +13,7 @@ server <- function(input, output) {
                          labels = scales::percent_format(scale = 1)) +
       labs(
         x = "Quarter",
-        y = "Occupancy",
-        title = "Figure 2: Quarterly Hospital Occupancy (2016 - 2021)"
+        y = "Occupancy"
       ) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1),
@@ -51,9 +50,7 @@ server <- function(input, output) {
         labs(
           x = "Quarter and Year",
           y = "Count of individuals in each SIMD",
-          colour = "SIMD",
-          title = "Figure 1: The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
-          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)"
+          colour = "SIMD"
         ) +
         theme_light() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1),
@@ -66,15 +63,14 @@ server <- function(input, output) {
         group_by(quarter, admission_type) %>%
         count(simd) %>% 
         filter(admission_type == input$admission_input) %>%
-        ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
+        ggplot(aes(x = quarter, y = n, 
+                   colour = as.factor(simd), group = simd)) +
         geom_line() +
         scale_color_manual(values = cbbPalette) +
         labs(
           x = "Quarter and Year",
           y = "Count of individuals in each SIMD",
-          colour = "SIMD",
-          title = "Figure 1: The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
-          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)"
+          colour = "SIMD"
         ) +
         theme_light() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1),
@@ -90,16 +86,17 @@ server <- function(input, output) {
       filter(quarter == input$sex_year_input) %>% 
       group_by(sex) %>% 
       summarise(total_stays = sum(stays)) %>% 
-      ggplot(aes(x = sex, y = total_stays)) +
-      geom_col(aes(fill = sex),
+      ggplot(aes(x = sex)) +
+      geom_col(aes(y = total_stays, fill = sex),
                show.legend = FALSE) +
+      geom_text(aes(y = total_stays * 0.95,
+                    label = total_stays),
+                colour = "white") +
       scale_y_continuous(labels = scales::comma_format()) +
-      labs(
-        x = "Sex",
-        y = "Total Stays",
-        title = "Figure 3: Winter Hopsitalisations by Sex"
-      ) +
-      theme_minimal()
+      scale_fill_manual(values = c("indianred2", "steelblue")) +
+      theme_minimal() +
+      theme(axis.title = element_blank(),
+            axis.text.y = element_blank())
   })
   
   output$age_plot <- renderPlot({
@@ -108,13 +105,16 @@ server <- function(input, output) {
       filter(quarter == input$age_year_input) %>% 
       group_by(age) %>% 
       summarise(total_stays = sum(stays)) %>% 
-      ggplot(aes(x = age, y = total_stays)) +
+      mutate(highest_age_group = if_else(total_stays == max(total_stays),
+                                         TRUE,
+                                         FALSE)) %>% 
+      ggplot(aes(x = age, y = total_stays, fill = highest_age_group)) +
       geom_col(show.legend = FALSE) +
       scale_y_continuous(labels = scales::comma_format()) +
+      scale_fill_manual(values = c("grey80", "indianred2")) +
       labs(
         x = "Age (Years)",
-        y = "Total Stays",
-        title = "Figure 4: Winter Hospitalisations by Age Group"
+        y = "Total Stays"
       ) +
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
