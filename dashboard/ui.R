@@ -30,7 +30,7 @@ ui <- dashboardPage(
               "every winter from 2016-2020", 
               width = 3,
               color = "light-blue",
-              icon = icon("male")),
+              icon = icon("mars")),
       
       infoBox("Deprivation admissions", 
               value = "Level 3 (Medium deprivation)", "every winter since 2016",
