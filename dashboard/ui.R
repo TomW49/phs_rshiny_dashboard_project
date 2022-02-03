@@ -35,7 +35,7 @@ ui <- dashboardPage(
               icon = icon("mars")),
       
       infoBox("2016-2020 winter admissions", 
-              value = "Level 3 Medium deprivation", "Were the most common cohort of admissions",
+              value = "Level 1 = 25% of total stays", " Level 1 Were the most common cohort of admissions",
               width = 3,
               color = "light-blue",
               icon = icon("house-user")),

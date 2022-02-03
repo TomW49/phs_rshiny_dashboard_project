@@ -66,8 +66,8 @@ server <- function(input, output) {
         scale_color_manual(values = cbbPalette) +
         scale_y_continuous(labels = scales::comma_format()) +
         labs(
-          x = "Quarter",
-          y = "Total Stays",
+          x = "\nQuarter",
+          y = "Total Stays\n",
           colour = "SIMD"
         ) +
         theme_minimal() +
