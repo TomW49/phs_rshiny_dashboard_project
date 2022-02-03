@@ -12,7 +12,7 @@ source(here("R/cleaning_script.R"))
 about_info_1 <- "In late 2019, as word spread of the emergence of a virus with unknown 
 severity and infectiousness across the globe so too did the very same virus; COVID-19. 
 Government authorities appeared to stumble and stutter in response, some less 
-so than other's, in efforts to maintain the health and well-being of their countries."
+so than others, in efforts to maintain the health and well-being of their countries."
 
 about_info_2 <- "In this interactive dashboard the effects of the pandemic will be highlighted in 
 particular to the National Health Service of Scotland. 
