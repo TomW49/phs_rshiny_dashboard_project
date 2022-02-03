@@ -93,6 +93,7 @@ server <- function(input, output) {
       ggplot(aes(x = sex, y = total_stays)) +
       geom_col(aes(fill = sex),
                show.legend = FALSE) +
+      scale_y_continuous(labels = scales::comma_format()) +
       labs(
         x = "Sex",
         y = "Total Stays",
@@ -109,6 +110,7 @@ server <- function(input, output) {
       summarise(total_stays = sum(stays)) %>% 
       ggplot(aes(x = age, y = total_stays)) +
       geom_col(show.legend = FALSE) +
+      scale_y_continuous(labels = scales::comma_format()) +
       labs(
         x = "Age (Years)",
         y = "Total Stays",
