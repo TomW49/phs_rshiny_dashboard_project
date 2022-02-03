@@ -16,6 +16,12 @@ The overarching theme is to display the effect winter had on the health service 
 
 This project will use R with R Studios, along with Git/Git Hub for version control.
 
+## Licence
+
+www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+
+Contains public sector information licensed under the Open Government Licence v3.0.
+
 ## How to run the project
 
 The application can be found in the *dashboard* folder and run through the *global.R* file.
