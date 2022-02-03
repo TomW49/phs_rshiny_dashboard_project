@@ -55,9 +55,7 @@ server <- function(input, output) {
         labs(
           x = "\nQuarter and Year",
           y = "Count of stays in each SIMD\n",
-          colour = "SIMD",
-          title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
-          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)\n"
+          colour = "SIMD"
         ) +
         theme_light() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1),
@@ -80,9 +78,7 @@ server <- function(input, output) {
         labs(
           x = "\nQuarter and Year",
           y = "Count of stays in each SIMD\n",
-          colour = "SIMD",
-          title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
-          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)\n"
+          colour = "SIMD"
         )
       +
         theme_light() +
