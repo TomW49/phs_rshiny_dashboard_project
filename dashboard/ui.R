@@ -29,7 +29,7 @@ ui <- dashboardPage(
       
       infoBox("Demographics driver winter admissions", 
               value = "Males aged 70-79", 
-              "Driver for every winter from 2016-2020", 
+              "Driver for winter admissions from 2016-2020", 
               width = 3,
               color = "light-blue",
               icon = icon("mars")),
@@ -41,7 +41,7 @@ ui <- dashboardPage(
               icon = icon("house-user")),
       
       infoBox("Average length of Stay between gender", 
-              value = "Females stayed 15% longer ", "Winter 2020 driver for length of stay",
+              value = "Females stayed 15% longer in winter", "Driver for length of stay",
               width = 3,
               color = "light-blue",
               icon = icon("venus"))
