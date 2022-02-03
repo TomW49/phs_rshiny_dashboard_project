@@ -48,15 +48,13 @@ server <- function(input, output) {
         aes(x = quarter, y = stays, colour = as.factor(simd), group = simd) +
         geom_line(group = 1) +
         scale_color_manual(values = cbbPalette) +
-        scale_y_continuous(labels = scales::comma) +
-        theme_light() +
-        theme(axis.text.x = element_text(angle = 90)) +
+        scale_y_continuous(labels = scales::comma_format()) +
         labs(
           x = "\nQuarter and Year",
           y = "Count of stays in each SIMD\n",
           colour = "SIMD"
         ) +
-        theme_light() +
+        theme_minimal() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1),
               axis.title = element_text(colour = "grey15"),
               plot.title = element_text(colour = "grey25"),
