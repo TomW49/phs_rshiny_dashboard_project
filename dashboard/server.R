@@ -41,8 +41,31 @@ server <- function(input, output) {
   
   output$simd_quarter <- renderPlot({
     
-    simd_quarter %>%
+    if(input$admission_input == "All"){
+      simd_quarter %>%
+        filter(!is.na(simd)) %>%
+        group_by(quarter) %>%
+        count(simd) %>% 
+        ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
+        geom_line() +
+        scale_color_manual(values = cbbPalette) +
+        labs(
+          x = "Quarter and Year",
+          y = "Count of individuals in each SIMD",
+          colour = "SIMD",
+          title = "The count of individuals in each SIMD across 2016 Q2 -2021 Q2",
+          subtitle = "Deprivation levels: 1(Most Deprived) - 5(Least Deprived)"
+        ) +
+        theme_light() +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1),
+              axis.title = element_text(colour = "grey15"),
+              plot.title = element_text(colour = "grey25"),
+              plot.subtitle = element_text(colour = "grey25"))
+    } else {
+      simd_quarter %>%
       filter(!is.na(simd)) %>%
+      group_by(quarter, admission_type) %>%
+      count(simd) %>% 
       filter(admission_type == input$admission_input) %>%
       ggplot(aes(x = quarter, y = n, colour = as.factor(simd), group = simd)) +
       geom_line() +
@@ -59,6 +82,7 @@ server <- function(input, output) {
             axis.title = element_text(colour = "grey15"),
             plot.title = element_text(colour = "grey25"),
             plot.subtitle = element_text(colour = "grey25"))
+    }
   })
 
   output$age_plot <- renderPlot({

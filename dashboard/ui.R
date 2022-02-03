@@ -49,13 +49,9 @@ ui <- dashboardPage(
                box(plotOutput(outputId = "simd_quarter", height = 250),
                    selectInput("admission_input",
                                label = "Select Admission Type",
-                               choices = c("Elective Inpatients",
-                                           "Emergency Inpatients",
-                                           "Transfers",
-                                           "All Day cases",
-                                           "All Inpatients",
-                                           "All Inpatients and Day cases",
-                                           "Not Specified"),
+                               choices = c("All", simd_quarter %>% 
+                                             distinct(admission_type) %>% 
+                                             pull()),
                                width = NULL),
                    width = 8, height = 325, style = "font-size:11px;"),
                box(plotOutput(outputId = "sex_plot", height = 250), 
