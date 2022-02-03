@@ -41,12 +41,11 @@ server <- function(input, output) {
     
     if(input$admission_input == "All"){
       simd_quarter %>%
-        filter(admission_type == input$admission_input) %>%
         group_by(quarter, simd) %>%
         summarise(stays = sum(stays)) %>%
         ggplot() +
         aes(x = quarter, y = stays, colour = as.factor(simd), group = simd) +
-        geom_line(group = 1) +
+        geom_line() +
         scale_color_manual(values = cbbPalette) +
         scale_y_continuous(labels = scales::comma_format()) +
         labs(
