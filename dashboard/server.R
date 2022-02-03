@@ -25,15 +25,21 @@ server <- function(input, output) {
   output$admissions_ae <- renderLeaflet({
     
     admissions_ae %>%
-      filter(str_detect(month, c("202101", "202102", "202103")))  %>%
+      filter(str_detect(month, ("20210[1-3]")))  %>%
       leaflet() %>%
       addProviderTiles(providers$CartoDB.Positron) %>%
+      addControl("A&E Volume per Location Over Winter 2020-21", position = "bottomright") %>% 
+      addLegend(labels = ~ health_board,
+                colors = ~pal(health_board),
+                position = "topright") %>% 
       addCircles(lng = ~X,
                  lat = ~Y,
                  color = ~ pal(health_board),
                  weight = 10,
                  radius = ~number_of_attendances_aggregate,
-                 popup = ~ location_name)
+                 popup = ~ location_name
+                 popup = ~ full_address
+      )
   })
   
   output$simd_quarter <- renderPlot({

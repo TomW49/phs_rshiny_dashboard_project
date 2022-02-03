@@ -3,12 +3,13 @@
 # A&E admissions, Geospatial prep
 
 # renaming variables
-# removing S319H (Little France, Edinburgh Children hospital) as no coords
-
+# inputting coords for S319H (Little France, Edinburgh Children hospital) 
 locations <- read_csv(here("../raw_data/nhs_medicalcentres.csv")) %>%
   clean_names() %>%
   rename(treatment_location = location, health_board = hb) %>% 
-  filter(treatment_location != "S319H")
+  mutate(x_coordinate = coalesce(x_coordinate, 328936),
+         y_coordinate = coalesce(y_coordinate, 670399)) %>% 
+  mutate(full_address = str_c(location_name, address_line, postcode, sep = ", "))
 
 # generating lat lon from British National Grid
 coords <- locations %>%
@@ -31,8 +32,7 @@ health_boards <- read_csv(here("../raw_data/nhs_healthboards.csv")) %>%
 # removing unneeded cols
 admissions_ae <- 
   read_csv(here("../raw_data/monthly_a&e_activity_and_waiting_times.csv")) %>%
-  clean_names() %>%
-  select(!c(1, 3:4, 8:26))
+  clean_names() 
 
 # JOINING DATA
 
@@ -44,13 +44,13 @@ locations <-
 admissions_ae <- 
   left_join(admissions_ae, locations, by = "treatment_location")
 
-# joining locations with health board
+# joining admissions with health board
 admissions_ae <- 
   left_join(admissions_ae, health_boards, by = "health_board" )
 
 # joining locations with health board - can use this for future geospatial plots
 nhs_scotland_medical_centre_loc <- 
-  left_join(locations, health_boards, by = "health_board")
+  left_join(locations, health_boards, by = "health_board") 
 
 # creating colour palette for map denoting NHS healthboards
 pal <- colorFactor(
