@@ -8,7 +8,7 @@ ui <- dashboardPage(
       column(8,
              box(about_info_1,br(),br(),
                  about_info_2,
-                 title = "About",
+                 title = "Introduction",
                  width = NULL)
       ),
       column(4,
@@ -27,21 +27,21 @@ ui <- dashboardPage(
               color = "light-blue",
               icon = icon("ambulance")),
       
-      infoBox("Demographics driver winter admissions", 
+      infoBox("2016-2020 winter admissions ", 
               value = "Males aged 70-79", 
-              "Driver for winter admissions from 2016-2020", 
+              "Were the biggest driver of hospital activity ", 
               width = 3,
               color = "light-blue",
               icon = icon("mars")),
       
-      infoBox("Deprivation driver admissions", 
-              value = "Level 3 (Medium deprivation)", "Main driver every winter since 2016",
+      infoBox("2016-2020 winter admissions", 
+              value = "Level 3 Medium deprivation", "Were the most common cohort of admissions",
               width = 3,
               color = "light-blue",
               icon = icon("house-user")),
       
-      infoBox("Average length of Stay between gender", 
-              value = "Females stayed 15% longer in winter", "Driver for length of stay",
+      infoBox("Inpatients 2020 winter", 
+              value = "Females stayed 15% longer", "On average than males in winter",
               width = 3,
               color = "light-blue",
               icon = icon("venus"))
