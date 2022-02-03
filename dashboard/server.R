@@ -49,7 +49,7 @@ server <- function(input, output) {
         scale_y_continuous(labels = scales::comma_format()) +
         labs(
           x = "Quarter and Year",
-          y = "Count of stays in each SIMD",
+          y = "Count of stays",
           colour = "SIMD"
         ) +
         theme_minimal() +
@@ -67,7 +67,7 @@ server <- function(input, output) {
         scale_y_continuous(labels = scales::comma_format()) +
         labs(
           x = "Quarter and Year",
-          y = "Count of stays in each SIMD",
+          y = "Count of stays",
           colour = "SIMD"
         ) +
         theme_minimal() +
