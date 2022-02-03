@@ -55,7 +55,14 @@ ui <- dashboardPage(
                                width = NULL),
                    width = 8, height = 325, style = "font-size:11px;"),
                box(plotOutput(outputId = "sex_plot", height = 250), 
-                   width = 4, height = 325)
+                   selectInput("sex_year_input",
+                               label = "Select Year",
+                               choices = c("2017" = "2017Q1",
+                                           "2018" = "2018Q1",
+                                           "2019" = "2019Q1",
+                                           "2020" = "2020Q1",
+                                           "2021" = "2021Q1")),
+                   width = 4, height = 325, style = "font-size:11px;")
              ),
              fluidRow(
                box(
@@ -68,7 +75,14 @@ ui <- dashboardPage(
                          width = NULL),
                    width = 7, height = 325, style = "font-size:11px;"),
                box(plotOutput(outputId = "age_plot", height = 250), 
-                   width = 5, height = 325)
+                   selectInput("age_year_input",
+                               label = "Select Year",
+                               choices = c("2017" = "2017Q1",
+                                           "2018" = "2018Q1",
+                                           "2019" = "2019Q1",
+                                           "2020" = "2020Q1",
+                                           "2021" = "2021Q1")),
+                   width = 5, height = 325, style = "font-size:11px;")
              )
       ),
       column(4,

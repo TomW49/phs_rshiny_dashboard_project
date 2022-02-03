@@ -35,8 +35,7 @@ server <- function(input, output) {
                  color = ~ pal(health_board),
                  weight = 10,
                  radius = ~number_of_attendances_aggregate,
-                 popup = ~ location_name
-      )
+                 popup = ~ location_name)
   })
   
   output$simd_quarter <- renderPlot({
@@ -88,6 +87,9 @@ server <- function(input, output) {
   output$sex_plot <- renderPlot({
     
     demographics_sex %>% 
+      filter(quarter == input$sex_year_input) %>% 
+      group_by(sex) %>% 
+      summarise(total_stays = sum(stays)) %>% 
       ggplot(aes(x = sex, y = total_stays)) +
       geom_col(aes(fill = sex),
                show.legend = FALSE) +
@@ -101,7 +103,10 @@ server <- function(input, output) {
   
   output$age_plot <- renderPlot({
     
-    demographics_age %>% 
+    demographics_age %>%
+      filter(quarter == input$age_year_input) %>% 
+      group_by(age) %>% 
+      summarise(total_stays = sum(stays)) %>% 
       ggplot(aes(x = age, y = total_stays)) +
       geom_col(show.legend = FALSE) +
       labs(
@@ -112,6 +117,4 @@ server <- function(input, output) {
       theme_minimal() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
   })
-  
-  
 }

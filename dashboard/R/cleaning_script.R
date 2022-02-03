@@ -107,7 +107,7 @@ cbbPalette <- c("#000000", "#E69F00", "#56B4E9",
 #demographics
 #count the number of missing value
 
-demographics<- 
+demographics <- 
   read_csv(here("../raw_data/treatment_age_and_sex.csv"))%>% 
   clean_names()
 #filtering the data by age
@@ -117,10 +117,7 @@ demographics_sex <- demographics %>%
     str_detect(quarter, "Q2") ~ "Q2",
     str_detect(quarter, "Q3") ~ "Q3",
     str_detect(quarter, "Q4") ~ "Q4"
-  )) %>%
-  filter(q == "Q1") %>% 
-  group_by(sex) %>% 
-  summarise(total_stays = sum(stays))
+  ))
 
 # filtering the data by sex
 demographics_age <- demographics %>% 
@@ -133,9 +130,4 @@ demographics_age <- demographics %>%
   mutate(age = str_remove(age, " years(.*)"),
          age = if_else(age == "90",
                        "89<",
-                       age)) %>% 
-  filter(q == "Q1") %>% 
-  group_by(age) %>% 
-  summarise(total_stays = sum(stays))
-
-
+                       age))
