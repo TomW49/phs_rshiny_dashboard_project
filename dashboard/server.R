@@ -42,8 +42,8 @@ server <- function(input, output) {
       simd_quarter %>%
         group_by(quarter, simd) %>%
         summarise(stays = sum(stays)) %>%
-        ggplot() +
-        aes(x = quarter, y = stays, colour = as.factor(simd), group = simd) +
+        ggplot(aes(x = quarter, y = stays, 
+                   colour = as.factor(simd), group = simd)) +
         geom_line() +
         scale_color_manual(values = cbbPalette) +
         scale_y_continuous(labels = scales::comma_format()) +
@@ -57,23 +57,20 @@ server <- function(input, output) {
               axis.title = element_text(colour = "grey15"))
     } else {
       simd_quarter %>%
+        filter(admission_type == input$admission_input) %>%
         group_by(quarter, simd) %>%
         summarise(stays = sum(stays)) %>%
-        filter(admission_type == input$admission_input) %>%
-        ggplot(aes(x = quarter, y = n, 
+        ggplot(aes(x = quarter, y = stays, 
                    colour = as.factor(simd), group = simd)) +
-        geom_line(group = 1) +
+        geom_line() +
         scale_color_manual(values = cbbPalette) +
-        scale_y_continuous(labels = scales::comma) +
-        theme_light() +
-        theme(axis.text.x = element_text(angle = 90)) +
+        scale_y_continuous(labels = scales::comma_format()) +
         labs(
-          x = "\nQuarter and Year",
-          y = "Count of stays in each SIMD\n",
+          x = "Quarter and Year",
+          y = "Count of stays in each SIMD",
           colour = "SIMD"
-        )
-      +
-        theme_light() +
+        ) +
+        theme_minimal() +
         theme(axis.text.x = element_text(angle = 45, hjust = 1),
               axis.title = element_text(colour = "grey15"))
     }
