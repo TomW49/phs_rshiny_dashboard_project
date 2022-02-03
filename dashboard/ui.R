@@ -6,13 +6,14 @@ ui <- dashboardPage(
     
     fluidRow(
       column(8,
-             box(about_info,
+             box(about_info_1,br(),br(),
+                 about_info_2,
                  title = "About",
                  width = NULL)
       ),
       column(4,
              box(img(src = "phs-logo.png", 
-                     height = "100%", 
+                     height = "160", 
                      width = "100%"), 
                  width = NULL)
       )
@@ -50,7 +51,7 @@ ui <- dashboardPage(
       column(8,
              fluidRow(
                box("Figure 1: The Count of Individuals in Each SIMD Across 2016 Q2 - 2021 Q2",
-                 plotOutput(outputId = "simd_quarter", height = 230),
+                   plotOutput(outputId = "simd_quarter", height = 230),
                    selectInput("admission_input",
                                label = "Select Admission Type",
                                choices = c("All", simd_quarter %>% 
@@ -71,13 +72,13 @@ ui <- dashboardPage(
              ),
              fluidRow(
                box("Figure 2: Quarterly Hospital Occupancy (2016 - 2021)",
-                 plotlyOutput(outputId = "capacity_plot", height = 230),
-                 selectInput("specialty_input",
-                         label = "Select Specialty",
-                         choices = capacity_general %>% 
-                           distinct(specialty_name) %>% 
-                           pull(),
-                         width = NULL),
+                   plotlyOutput(outputId = "capacity_plot", height = 230),
+                   selectInput("specialty_input",
+                               label = "Select Specialty",
+                               choices = capacity_general %>% 
+                                 distinct(specialty_name) %>% 
+                                 pull(),
+                               width = NULL),
                    width = 7, height = 325, style = "font-size:12px;"),
                box("Figure 4: Winter Hospitalisations by Age Group",
                    plotOutput(outputId = "age_plot", height = 230), 
@@ -98,7 +99,11 @@ ui <- dashboardPage(
     ),
     
     fluidRow(
-      column(3),
+      column(6,
+             box(title = "Conclusions",
+                 "Figure 1:",
+                 width = NULL, height = 150)
+      ),
       column(6,
              tabBox(tabPanel("BBC News", 
                              tags$h1("'Emergency department patients are waiting longer'"), 
@@ -110,8 +115,7 @@ ui <- dashboardPage(
                              tags$a("BBC News website", 
                                     href = "https://www.bbc.co.uk/news/uk-scotland-54059199"), 
                              tags$i("Our analyses confirms that this quote is true.")),
-                    width = NULL),
-             column(3)
+                    width = NULL)
       )
     )
   )
