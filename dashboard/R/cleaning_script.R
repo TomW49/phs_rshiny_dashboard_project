@@ -96,7 +96,8 @@ percentage_label <- capacity_general %>%
 
 #making a set which looks at quarter and simd and groups them
 simd_quarter <- read_csv(here("../raw_data/treatment_and_deprevation.csv")) %>%
-  clean_names()
+  clean_names() %>% 
+  filter(!is.na(simd))
 
 cbbPalette <- c("#000000", "#E69F00", "#56B4E9", 
                 "#009E73", "#D55E00", "#0072B2", 
