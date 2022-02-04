@@ -57,13 +57,40 @@ hb_name_label <- admissions_ae %>%
   filter(!is.na(hb_name)) %>% 
   distinct(hb_name)
 
-colours <- as.tibble(c("#006b54", "#009e49", "#5bbf21",
-                       "#00aa9e", "#00adc6", "#0091c9",
-                       "#003893", "#56008c", "#a00054",
-                       "#931638", "#d81e05", "#d81e05",
-                       "#f7e214", "#c466ff"))
+colours <- as.tibble(c("#006b54", # dark green
+                       "#009e49", # green
+                       "#5bbf21", # light green 
+                       "#d81e05", # red
+                       "#00adc6", # aqua blue
+                       "#00aa9e", # aqua green
+                       "#f7e214", # yellow
+                       "#0091c9", # light blue
+                       "#c466ff", # pink
+                       "#003893", # dark blue
+                       "#56008c", # purple
+                       "#a00054", # dark pink
+                       "#d81e05", # orange
+                       "#931638"))# dark red
 
 hb_name_colours <- bind_cols(hb_name_label, colours)
+
+# creating colour palette function for map denoting NHS health boards
+pal <- colorFactor(
+  palette = c("#006b54", # dark green
+              "#009e49", # green
+              "#5bbf21", # light green 
+              "#00aa9e", # aqua green
+              "#00adc6", # aqua blue
+              "#0091c9", # light blue
+              "#003893", # dark blue
+              "#56008c", # purple
+              "#a00054", # dark pink
+              "#931638", # dark red
+              "#d81e05", # red
+              "#d81e05", # orange
+              "#f7e214", # yellow
+              "#c466ff"),# pink
+  domain = admissions_ae$health_board)
 
 # removing locations as not required further for project 
 rm(locations)

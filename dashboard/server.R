@@ -36,13 +36,13 @@ server <- function(input, output) {
       leaflet() %>%
       addProviderTiles(providers$CartoDB.Positron) %>%
       addControl("A&E Volume Per Location Over Winter 2020-21",
-                 position = "topright") %>% 
+                 position = "bottomleft") %>% 
       addLegend(labels = ~ hb_name_colours$hb_name,
                 colors = ~ hb_name_colours$value,
-                position = "bottomright") %>% 
+                position = "topright") %>% 
       addCircles(lng = ~X,
                  lat = ~Y,
-                 color = ~ pal(hb_name),
+                 color = ~ pal(health_board),
                  weight = 10,
                  radius = ~total_winter19_20/2,
                  popup = ~ full_address
