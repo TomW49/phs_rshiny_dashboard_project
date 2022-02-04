@@ -9,7 +9,7 @@ server <- function(input, output) {
       ggplot(aes(x = quarter, y = avg)) +
       geom_line(group = 1, colour = "steelblue") + 
       geom_point(colour = "steelblue") +
-      scale_y_continuous(limits = c(50, 100),
+      scale_y_continuous(limits = c(0, 100),
                          labels = scales::percent_format(scale = 1)) +
       labs(
         x = "Quarter",
