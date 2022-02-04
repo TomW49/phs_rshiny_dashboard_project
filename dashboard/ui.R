@@ -36,7 +36,7 @@ ui <- dashboardPage(
       
       infoBox("2016-2020 winter admissions", 
               value = "Level 1 = 25% of total stays", 
-              " Level 1 Were the most common cohort of admissions",
+              " Level 1 Were the most common cohort",
               width = 3,
               color = "light-blue",
               icon = icon("house-user")),
@@ -105,7 +105,10 @@ ui <- dashboardPage(
     fluidRow(
       column(6,
              box(title = "Conclusions",
-                 "Figure 1: Level 1 SIMD had the highest amount of stays across 2016-2020. This highlights the need to focus on high deprivation areas.",
+                 figure_1 ,br(),
+                 figure_2 ,br(),
+                 figure_3 ,br(),
+                 figure_4 ,br(),
                  width = NULL, height = 150)
       ),
       column(6,

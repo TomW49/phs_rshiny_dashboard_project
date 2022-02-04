@@ -22,3 +22,11 @@ The data is open source from Public Health Scotland and ranges from early
 2016 to early 2021. The aim is to convey an understanding of the seasonal 
 'winter crisis' NHS Scotland experiences every year and how the respiratory 
 disease has impacted the acute sector within hospitals around the country."
+
+figure_1 <- "Figure 1: Level 1 SIMD had the highest amount of stays across 2016-2020."
+
+figure_2 <-  "Figure 2: Bed occupancy decreased by 18% in 2020 Q2 and is increasing again."
+
+figure_3 <- "Figure 3: Females are more likely to stay in hospital in winter"
+
+figure_4 <- "Figure 4: The main age brakcet effected by winter across 4 years is 70-79 years"
