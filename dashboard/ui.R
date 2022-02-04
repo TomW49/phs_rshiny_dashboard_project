@@ -116,12 +116,17 @@ ui <- dashboardPage(
                              tags$h1("'Emergency department patients are waiting longer'"), 
                              tags$a("BBC News website", 
                                     href = "https://www.bbc.com/news/uk-scotland-58641817"), 
-                             tags$i("Our analyses confirms that this quote is true.")),
+                             tags$i("Our findings behind this statement are correct, as we 
+                                    uncovered a 7% increase in admissions within the Accident 
+                                    and Emergency Departments. This seemingly small increase along with the introduction 
+                                    of COVID-19 within hospitals has put immense pressure on the NHS across the nation.
+                                    With the government now implementing enforced isolation staffing levels will inevitabley reduce
+                                    adding further pressure on the service.")),
                     tabPanel("BBC News", 
                              tags$h1("'A 30%-50% positive test rate was routinely seen in the older age groups'"),
                              tags$a("BBC News website", 
                                     href = "https://www.bbc.co.uk/news/uk-scotland-54059199"), 
-                             tags$i("Our analyses confirms that this quote is true.")),
+                             tags$i("Our analyses can align with this statement, as seen in Figure 4. ")),
                     width = NULL)
       )
     )
