@@ -87,13 +87,15 @@ As described, these were chosen for their content that directly relates to our l
 
 ### Data quality and potential bias, including a brief summary of data cleaning and transformations
 
-According to the About tab on the dataset page/dedicated page online, the data quality may prove to hold some inaccuracies. This quote from Public Health Scotland's website regarding it's data explains why:
+According to the About tab on the dataset page/dedicated page online, the data may prove to hold some inaccuracies. This quote from Public Health Scotland's website regarding it's data explains why:
 
 > Before data is released on the open data platform it is first assessed for statistical disclosure. This means there are a few cases where we have suppressed or rounded numbers to protect confidentiality. This can mean that you find numbers that may not add up to their totals.
 
 This was certainly observed within a few of the datasets and is a reasonable action to take, however there is potential for the data to be abused under the banner of "anonymity".
 
-The data was provided and audited by Public Health Scotland and does not contain bias data at first glance as it is statistical in nature and does not hold any real identifiers. However does contain age groups and sex - but these have been diluted as far as they can be as to be unidentifiable. General sweeping conclusions could potentially be made on the dateset on deprivation levels of patients within hospital locales, however not everyone in that area may be "deprived".
+The data was provided and audited by Public Health Scotland and does not contain bias data at first glance as it is statistical in nature and does not hold any real identifiers. However does contain age groups and sex - but these have been diluted as far as they can be as to be unidentifiable. General sweeping conclusions could potentially be made on the dataset on deprivation levels of patients within hospital locales, however not everyone in that area may be "deprived".
+
+Another characteristic of the data was that the "time-stamp" for was in yearly quarters. This enables the large amounts of data that is collected within NHS Scotland to be bracketed, aggregated and delivered as a whole portion after review. This did however make exploiting the data for manipulation and specific statistics more challenging. 
 
 We used six datasets for our application. The steps to clean these are as follows:
 
