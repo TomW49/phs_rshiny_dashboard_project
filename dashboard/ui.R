@@ -13,7 +13,7 @@ ui <- dashboardPage(
       ),
       column(4,
              box(img(src = "phs-logo.png", 
-                     height = "160", 
+                     height = "180", 
                      width = "100%"), 
                  width = NULL)
       )
