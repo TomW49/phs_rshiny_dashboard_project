@@ -8,7 +8,7 @@ ui <- dashboardPage(
       column(8,
              box(about_info_1,br(),br(),
                  about_info_2,
-                 title = "About",
+                 title = "Introduction",
                  width = NULL)
       ),
       column(4,
@@ -27,21 +27,21 @@ ui <- dashboardPage(
               color = "light-blue",
               icon = icon("ambulance")),
       
-      infoBox("Demographics driver winter admissions", 
+      infoBox("2016-2020 winter admissions ", 
               value = "Males aged 70-79", 
-              "Driver for winter admissions from 2016-2020", 
+              "Were the biggest driver of hospital activity ", 
               width = 3,
               color = "light-blue",
               icon = icon("mars")),
       
-      infoBox("Deprivation driver admissions", 
-              value = "Level 3 (Medium deprivation)", "Main driver every winter since 2016",
+      infoBox("2016-2020 winter admissions", 
+              value = "Level 1 = 25% of total stays", " Level 1 Were the most common cohort of admissions",
               width = 3,
               color = "light-blue",
               icon = icon("house-user")),
       
-      infoBox("Average length of Stay between gender", 
-              value = "Females stayed 15% longer in winter", "Driver for length of stay",
+      infoBox("Inpatients 2020 winter", 
+              value = "Females stayed 15% longer", "On average than males in winter",
               width = 3,
               color = "light-blue",
               icon = icon("venus"))
@@ -50,7 +50,7 @@ ui <- dashboardPage(
     fluidRow(
       column(8,
              fluidRow(
-               box("Figure 1: Total Count of Stays in Each SIMD Group (2016 - 2021)",
+               box("Figure 1: Total Count of Stays in Each Scottish Index of Multiple Deprivation Group (2016 - 2021)",
                    plotOutput(outputId = "simd_quarter", height = 230),
                    selectInput("admission_input",
                                label = "Select Admission Type",

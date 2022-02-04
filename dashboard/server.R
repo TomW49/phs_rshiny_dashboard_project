@@ -25,15 +25,28 @@ server <- function(input, output) {
   output$admissions_ae <- renderLeaflet({
     
     admissions_ae %>%
-      filter(str_detect(month, c("202101", "202102", "202103")))  %>%
+      select(!c(1, 8:26)) %>% 
+      filter(str_detect(month, ("202[0-1]0[1-3]"))) %>% 
+      pivot_wider(names_from = month, 
+                  names_prefix = "x", 
+                  values_from = number_of_attendances_aggregate) %>%
+      filter(department_type == "Emergency Department") %>%
+      mutate(total_winter19_20 = (x202001 + x202002 + x202003)) %>% 
+      mutate(total_winter20_21 = (x202101 + x202102 + x202103)) %>%
       leaflet() %>%
       addProviderTiles(providers$CartoDB.Positron) %>%
+      addControl("A&E Volume Per Location Over Winter 2020-21",
+                 position = "topright") %>% 
+      addLegend(labels = ~ hb_name_colours$hb_name,
+                colors = ~ hb_name_colours$value,
+                position = "bottomright") %>% 
       addCircles(lng = ~X,
                  lat = ~Y,
-                 color = ~ pal(health_board),
+                 color = ~ pal(hb_name),
                  weight = 10,
-                 radius = ~number_of_attendances_aggregate,
-                 popup = ~ location_name)
+                 radius = ~total_winter19_20/2,
+                 popup = ~ full_address
+      )
   })
   
   output$simd_quarter <- renderPlot({
@@ -66,8 +79,8 @@ server <- function(input, output) {
         scale_color_manual(values = cbbPalette) +
         scale_y_continuous(labels = scales::comma_format()) +
         labs(
-          x = "Quarter",
-          y = "Total Stays",
+          x = "\nQuarter",
+          y = "Total Stays\n",
           colour = "SIMD"
         ) +
         theme_minimal() +

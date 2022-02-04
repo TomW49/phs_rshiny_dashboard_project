@@ -3,12 +3,13 @@
 # A&E admissions, Geospatial prep
 
 # renaming variables
-# removing S319H (Little France, Edinburgh Children hospital) as no coords
-
+# inputting coords for S319H (Little France, Edinburgh Children hospital) 
 locations <- read_csv(here("../raw_data/nhs_medicalcentres.csv")) %>%
   clean_names() %>%
   rename(treatment_location = location, health_board = hb) %>% 
-  filter(treatment_location != "S319H")
+  mutate(x_coordinate = coalesce(x_coordinate, 328936),
+         y_coordinate = coalesce(y_coordinate, 670399)) %>% 
+  mutate(full_address = str_c(location_name, address_line, postcode, sep = ", "))
 
 # generating lat lon from British National Grid
 coords <- locations %>%
@@ -31,8 +32,7 @@ health_boards <- read_csv(here("../raw_data/nhs_healthboards.csv")) %>%
 # removing unneeded cols
 admissions_ae <- 
   read_csv(here("../raw_data/monthly_a&e_activity_and_waiting_times.csv")) %>%
-  clean_names() %>%
-  select(!c(1, 3:4, 8:26))
+  clean_names() 
 
 # JOINING DATA
 
@@ -44,27 +44,33 @@ locations <-
 admissions_ae <- 
   left_join(admissions_ae, locations, by = "treatment_location")
 
-# joining locations with health board
+# joining admissions with health board
 admissions_ae <- 
   left_join(admissions_ae, health_boards, by = "health_board" )
 
 # joining locations with health board - can use this for future geospatial plots
 nhs_scotland_medical_centre_loc <- 
-  left_join(locations, health_boards, by = "health_board")
+  left_join(locations, health_boards, by = "health_board") 
 
-# creating colour palette for map denoting NHS healthboards
-pal <- colorFactor(
-  palette = c("#006b54", "#009e49", "#5bbf21",
-              "#00aa9e", "#00adc6", "#0091c9",
-              "#003893", "#56008c", "#a00054",
-              "#931638", "#d81e05", "#d81e05",
-              "#f7e214", "#c466ff"),
-  domain = admissions_ae$health_board)
+# creating colour palette for map denoting NHS health boards
+hb_name_label <- admissions_ae %>% 
+  filter(!is.na(hb_name)) %>% 
+  distinct(hb_name)
+
+colours <- as.tibble(c("#006b54", "#009e49", "#5bbf21",
+                       "#00aa9e", "#00adc6", "#0091c9",
+                       "#003893", "#56008c", "#a00054",
+                       "#931638", "#d81e05", "#d81e05",
+                       "#f7e214", "#c466ff"))
+
+hb_name_colours <- bind_cols(hb_name_label, colours)
 
 # removing locations as not required further for project 
 rm(locations)
 rm(health_boards)
 rm(coords)
+rm(colours)
+rm(hb_name_label)
 
 #-----------------------------------------------------------------------------#
 
