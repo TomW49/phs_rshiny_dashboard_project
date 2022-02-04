@@ -126,7 +126,10 @@ ui <- dashboardPage(
                              tags$h1("'A 30%-50% positive test rate was routinely seen in the older age groups'"),
                              tags$a("BBC News website", 
                                     href = "https://www.bbc.co.uk/news/uk-scotland-54059199"), 
-                             tags$i("Our analyses can align with this statement, as seen in Figure 4. ")),
+                             tags$i("Our analyses can align with this statement, as seen in Figure 4.
+                                    Although specifically our data is prior to the COVID-19 pandemic,
+                                    with the consistant drivers of hospital activity 
+                                    being within older age groups, it proves that by proxy they are the most vulnerable and highest affected group.")),
                     width = NULL)
       )
     )
