@@ -52,7 +52,7 @@ ui <- dashboardPage(
     fluidRow(
       column(8,
              fluidRow(
-               box("Figure 1: Total Count of Stays in Each Scottish Index of Multiple Deprivation Group (2016 - 2021)",
+               box("Figure 1: Total Count of Stays in Each Scottish Index of Multiple Deprivation (SIMD) Group (2016 - 2021)",
                    plotOutput(outputId = "simd_quarter", height = 230),
                    selectInput("admission_input",
                                label = "Select Admission Type",
