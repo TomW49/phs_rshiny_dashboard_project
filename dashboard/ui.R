@@ -61,7 +61,7 @@ ui <- dashboardPage(
                                              pull()),
                                width = NULL),
                    width = 8, height = 325, style = "font-size:12px;"),
-               box("Figure 3: Winter Hopsitalisations by Gender",
+               box("Figure 3: Winter Hopsitalisations by Sex",
                    plotOutput(outputId = "sex_plot", height = 230), 
                    selectInput("sex_year_input",
                                label = "Select Year",
@@ -105,7 +105,7 @@ ui <- dashboardPage(
     fluidRow(
       column(6,
              box(title = "Conclusions",
-                 "Figure 1:",
+                 "Figure 1: Level 1 SIMD had the highest amount of stays across 2016-2020. This highlights the need to focus on high deprivation areas.",
                  width = NULL, height = 150)
       ),
       column(6,
