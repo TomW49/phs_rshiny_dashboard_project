@@ -1,0 +1,27 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+bed <- read_csv("../raw_data/bed_by_board_of_treatment_and_speciality.csv")
+
+bed %>%
+  select(Quarter, PercentageOccupancy) %>%
+  ggplot() +
+  aes(x = Quarter, y = PercentageOccupancy) +
+  geom_line()
+```
+```{r}
+simd_quarter %>%
+  group_by(simd) %>%
+  summarise(count = sum(stays))
+```
+
+```{r}
+10270530 + 9001694 + 7890528	+ 7004029 + 6364396
+
+10270530 / 40531177 * 100
+```
+

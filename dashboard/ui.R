@@ -35,7 +35,7 @@ ui <- dashboardPage(
               icon = icon("mars")),
       
       infoBox("2016-2020 winter admissions", 
-              value = "Level 1 = 25% of total stays", 
+              value = "SIMD 1 = 25% of total stays", 
               " Level 1 Were the most common cohort",
               width = 3,
               color = "light-blue",
@@ -128,7 +128,6 @@ ui <- dashboardPage(
                                     href = "https://www.bbc.co.uk/news/uk-scotland-54059199"), 
                              tags$i("Our analyses can align with this statement, as seen in Figure 4.
                                     Although specifically our data is prior to the COVID-19 pandemic,
-                                    with the consistant drivers of hospital activity 
                                     being within older age groups, it proves that by proxy they are the most vulnerable and highest affected group.")),
                     width = NULL)
       )
