@@ -59,7 +59,7 @@ ui <- dashboardPage(
                                              pull()),
                                width = NULL),
                    width = 8, height = 325, style = "font-size:12px;"),
-               box("Figure 3: Winter Hopsitalisations by gender",
+               box("Figure 3: Winter Hopsitalisations by Gender",
                    plotOutput(outputId = "sex_plot", height = 230), 
                    selectInput("sex_year_input",
                                label = "Select Year",
