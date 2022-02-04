@@ -31,6 +31,7 @@ The dashboard outlines our topic as follows:
 
 ### Stages of the project
 **PDA Outcome 1.1. Stages in a data science project**
+
 **PDA Outcome 2.1. Project planning and allocation of tasks and resources**
 
 -   Identify and understand the main requirement of the dashboard, unifying with a mission statement
@@ -64,6 +65,7 @@ The dashboard outlines our topic as follows:
 
 ### Which tools were used in the project
 **PDA Outcome 1.3. Collaboration tools**
+
 **PDA Outcome 1.5. Source control systems**
 
 -   [Zoom](https://zoom.us/) - means of communication and idea sharing.
@@ -74,6 +76,7 @@ The dashboard outlines our topic as follows:
 
 ### How did you gather and synthesise requirements for the project?
 **PDA Outcome 1.4. Project management methods and software**
+
 **PDA Outcome 2.2. Quality control and quality assurance**
 
 We synthesised the information given in the brief by exploring all provided materials individually understanding, in our own personal view, what was required of the group. We then shared our interpretations with each other while unanimously funnelling ideas into one unifying approach. By creating a mission statement, this allowed a clearly defined reference point to be accessed by all team members at all times. This meant that no matter what area of the project an individual was completing at any given time, if the mission statement could be met by their actions then the work is beneficial to team and further drives us towards our end goal.
@@ -148,6 +151,7 @@ We used six datasets for our application. The steps to clean these are as follow
 
 ### How is the data stored and structured
 **PDA Outcome 1.7. Data requirements including data sources**
+
 **PDA Outcome 2.4. Data architecture and data modelling**
 
 The datasets that we have used for our project were downloaded open source from [Public Health Scotland](https://www.opendata.nhs.scot/dataset) in the form of .csv files, which are stored in our shared Git Hub Repository. The data will be stored in both raw and cleaned formats. Benefits of storing the data like this are that they are universally accessible and can be revised at any point.
